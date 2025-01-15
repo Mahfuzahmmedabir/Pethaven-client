@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import {
   Navbar,
-  MobileNav,
   Typography,
   Button,
-  IconButton,
-  Card,
+  DialogHeader,
+  Dialog,
+  DialogBody,
+  DialogFooter,
 } from '@material-tailwind/react';
+
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth/useAuth';
 
 const Navbars = () => {
-  
+  const [size, setSize] = useState(null);
+  const handleOpen = value => setSize(value);
   const { user, logOut } = useAuth();
   console.log(user);
 
   const navList = (
-
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
         as="li"
@@ -63,9 +65,6 @@ const Navbars = () => {
 
   return (
     <div className="">
-      <div>
-        <h2>{user?.email}</h2>
-      </div>
       <div className="m-6 ">
         <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
           <div className="flex items-center justify-between text-blue-gray-900">
@@ -78,11 +77,51 @@ const Navbars = () => {
             </Typography>
             <div className="flex items-center gap-4">
               <div className="mr-4 hidden lg:block">{navList}</div>
-              
               <div className="flex items-center gap-x-1">
                 {user ? (
                   <>
-                    <button onClick={logOut}>logout</button>
+                    <button onClick={() => handleOpen('xs')}>
+                      <img
+                        className="w-10 h-10 rounded-full"
+                        src={user?.photoURL}
+                        alt=""
+                      />
+                    </button>
+
+                    <div className="">
+                      <Dialog
+                        open={size === 'xs'}
+                        size={size || 'md'}
+                        handler={handleOpen}
+                        className=" lg:ml-[1000px] md:ml-[300px] lg:-mt-32 md:-mt-20"
+                      >
+                        <DialogHeader className="text-center flex justify-center flex-col text-[18px] ">
+                          {user?.email}
+                          <img
+                            className="w-20 h-20 rounded-full"
+                            src={user?.photoURL}
+                            alt=""
+                          />
+                          <h2 className="text-[19px] font-normal">
+                            Hi {user?.displayName}!
+                          </h2>
+                        </DialogHeader>
+                        <DialogBody>
+                          <div className="flex flex-col justify-center items-center">
+                            <Link>home </Link>
+                            <Link>home </Link>
+                            <Link>home </Link>
+                            <Link>home </Link>
+                            <Link>home </Link>
+                            <Link>home </Link>
+                          </div>
+
+                          <button className="w-full" onClick={logOut}>
+                            Log Out
+                          </button>
+                        </DialogBody>
+                      </Dialog>
+                    </div>
                   </>
                 ) : (
                   <>

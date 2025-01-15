@@ -1,16 +1,8 @@
-import React, { useContext, useState } from 'react';
 import useAuth from '../../hooks/useAuth/useAuth';
 import { useForm } from 'react-hook-form';
-import {
-  Card,
-  Input,
-  Checkbox,
-  Button,
-  Typography,
-} from '@material-tailwind/react';
+import {Card,Input,Checkbox,Typography} from '@material-tailwind/react';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 import { Link } from 'react-router-dom';
-
 const Signin = () => {
   const { createNewUser, updeateProfile } = useAuth();
   const {
@@ -33,8 +25,6 @@ const Signin = () => {
     } catch (error) {
       console.error('Google login error:', error.message);
     }
-
-
   };
   return (
     <div className="mt-10 flex justify-evenly">
