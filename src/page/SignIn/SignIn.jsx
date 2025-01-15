@@ -12,31 +12,30 @@ import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 import { Link } from 'react-router-dom';
 
 const Signin = () => {
-  const { createNewUser } = useAuth();
+  const { createNewUser, updeateProfile } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const onSubmit =  async (data) => {
-    const { email, password } = data;
+  const onSubmit = async (data) => {
+    console.log(data)
+    const { email, password, name, photo } = data;
     console.log(email, password);
     try {
       await createNewUser(email, password);
       alert('yeay hooo')
-      
+      updeateProfile(name, photo)
+        .then(() => {
+        alert('updeat')
+      }) 
+
     } catch (error) {
       console.error('Google login error:', error.message);
     }
 
 
-
-
-
-
   };
-
   return (
     <div className="mt-10 flex justify-evenly">
       {/* Animation section */}
@@ -48,7 +47,6 @@ const Signin = () => {
           <Typography className="text-center" variant="h2" color="blue-gray">
             Sign Up
           </Typography>
-
           <SocialLogin></SocialLogin>
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -67,6 +65,28 @@ const Signin = () => {
               {errors.name && (
                 <span className="-mt-6 text-red-600"> Name is required </span>
               )}
+              <Typography variant="h6" color="blue-gray" className="-mb-3">
+                Photo url
+              </Typography>
+              <Input
+                {...register('photo', { required: true })}
+                size="lg"
+                type='url'
+                placeholder="Your Photo Url"
+                className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              />
+              {errors.name && (
+                <span className="-mt-6 text-red-600"> Name is required </span>
+              )}
+
+
+
+
+
+
+
+
+
 
               <Typography variant="h6" color="blue-gray" className="-mb-3">
                 Your Email
