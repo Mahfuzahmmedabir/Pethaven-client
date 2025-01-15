@@ -5,16 +5,15 @@ import { auth } from '../firebase/firebase.init';
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
-  const creatuser = (email, password) => {
-    return createUserWithEmailAndPassword(auth,email,password)
-  }
+  const createNewUser = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
  
    
   
 
   const authInfo = {
-    creatuser,
-   
+    createNewUser,
   };
 
   return (
