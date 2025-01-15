@@ -8,7 +8,9 @@ import {
   Button,
   Typography,
 } from '@material-tailwind/react';
-  
+import SocialLogin from '../../Components/SocialLogin/SocialLogin';
+import { Link } from 'react-router-dom';
+
 const Signin = () => {
   const { createNewUser } = useAuth();
   const {
@@ -18,27 +20,22 @@ const Signin = () => {
   } = useForm();
 
   const onSubmit = data => {
-     const { email, password } = data;
-     console.log(email, password);
-  } 
-
- 
-
-
+    const { email, password } = data;
+    console.log(email, password);
+  };
 
   return (
-    <div className="mt-10 flex justify-between">
+    <div className="mt-10 flex justify-evenly">
       {/* Animation section */}
       <div>sdfsd</div>
       {/* form section */}
       <div>
         <Card color="transparent" className="p-7" shadow={true}>
-          <Typography variant="h4" color="blue-gray">
+          <Typography className='text-center' variant="h2" color="blue-gray">
             Sign Up
           </Typography>
-          <Typography color="gray" className="mt-1 font-normal">
-            Nice to meet you! Enter your details to register.
-          </Typography>
+
+          <SocialLogin></SocialLogin>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="mt-8 mb-2  w-80 max-w-screen-lg sm:w-96"
@@ -50,30 +47,45 @@ const Signin = () => {
               <Input
                 {...register('name', { required: true })}
                 size="lg"
-                placeholder="name@mail.com"
+                placeholder="name"
                 className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
               />
-              {errors.name && <span> sdfsdf</span> }
+              {errors.name && (
+                <span className="-mt-6 text-red-600"> Name is required </span>
+              )}
 
               <Typography variant="h6" color="blue-gray" className="-mb-3">
                 Your Email
               </Typography>
               <Input
-                {...register('email')}
+                {...register('email', { required: true })}
                 size="lg"
-                placeholder="name@mail.com"
+                placeholder="email@mail.com"
                 className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
               />
+              {errors.email && (
+                <span className="-mt-6 text-red-600">
+                  {' '}
+                  Email Address is required{' '}
+                </span>
+              )}
               <Typography variant="h6" color="blue-gray" className="-mb-3">
                 Password
               </Typography>
               <Input
-                {...register('password')}
+                {...register('password', {
+                  pattern: /^(?=.*[!@#$%^&*(),.?":{}|<>])/,
+                })}
                 type="password"
                 size="lg"
                 placeholder="********"
                 className=" border-t-blue-gray-200 focus:!border-t-gray-900"
               />
+              {errors.password && (
+                <span className="-mt-6 text-red-600">
+                  password Address is required
+                </span>
+              )}
             </div>
 
             <Checkbox
@@ -106,9 +118,9 @@ const Signin = () => {
 
             <Typography color="gray" className="mt-4 text-center font-normal">
               Already have an account?{' '}
-              <a href="#" className="font-medium text-gray-900">
-                Sign In
-              </a>
+              <Link to={'/login'} className="font-medium text-gray-900">
+                Log In
+              </Link>
             </Typography>
           </form>
         </Card>
