@@ -19,19 +19,33 @@ const Signin = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = data => {
+  const onSubmit =  async (data) => {
     const { email, password } = data;
     console.log(email, password);
+    try {
+      await createNewUser(email, password);
+      alert('yeay hooo')
+      
+    } catch (error) {
+      console.error('Google login error:', error.message);
+    }
+
+
+
+
+
+
   };
 
   return (
     <div className="mt-10 flex justify-evenly">
       {/* Animation section */}
-      <div>sdfsd</div>
+      {/* TODO */}
+      <div>Animation section</div>
       {/* form section */}
       <div>
         <Card color="transparent" className="p-7" shadow={true}>
-          <Typography className='text-center' variant="h2" color="blue-gray">
+          <Typography className="text-center" variant="h2" color="blue-gray">
             Sign Up
           </Typography>
 

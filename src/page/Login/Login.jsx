@@ -9,17 +9,31 @@ import {
 import { Link } from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 import { useForm } from 'react-hook-form';
+import useAuth from '../../hooks/useAuth/useAuth';
 const Login = () => {
+  const {signInWithEmailAndPass} = useAuth()
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = data => {
+  const onSubmit =  async (data)  => {
     const { email, password } = data;
     console.log(email, password);
+
+    try {
+      const result = await signInWithEmailAndPass(email, password);
+      console.log(result)
+      alert(result.user.email);
+    } catch (error) {
+      console.error('Google login error:', error.message);
+      alert(error.message);
+    }
+
+
   };
+
   return (
     <div>
       <div className="mt-10 flex justify-evenly">
@@ -65,15 +79,14 @@ const Login = () => {
                   placeholder="********"
                   className=" border-t-blue-gray-200 focus:!border-t-gray-900"
                 />
+
                 {errors.password && (
                   <span className="-mt-6 text-red-600">
                     password Address is required
                   </span>
                 )}
               </div>
-
-              
-
+              <label>Forget password</label>
               <div className="bg-black py-2 rounded-xl text-center">
                 <button
                   className="  font-bold text-white mx-auto text-center"
