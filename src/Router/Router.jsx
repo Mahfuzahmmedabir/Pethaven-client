@@ -4,6 +4,8 @@ import Main from '../layout/Main';
 import Login from '../page/Login/Login';
 
 import Signin from '../page/SignIn/SignIn';
+import PetList from '../page/PetList/PetList';
+import DonationCampaigns from '../page/DonationCampaigns/DonationCampaigns';
 
 const router = createBrowserRouter([
   {
@@ -14,18 +16,25 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home></Home>,
       },
+      {
+        path: '/petlist',
+        element: <PetList></PetList>,
+      },
+      {
+        path: '/donation-campaign',
+        element: <DonationCampaigns></DonationCampaigns>
+      },
     ],
   },
-  
+
   {
     path: '/login',
     element: <Login></Login>,
   },
   {
     path: '/signin',
-    element: <Signin></Signin>
-  }
- 
+    element: <Signin></Signin>,
+  },
 ]);
 
 export default router;

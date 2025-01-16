@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+
+import logo from '../../assets/logo.webp';
 import {
   Navbar,
   Typography,
@@ -6,7 +8,6 @@ import {
   DialogHeader,
   Dialog,
   DialogBody,
-  DialogFooter,
 } from '@material-tailwind/react';
 
 import { Link } from 'react-router-dom';
@@ -26,9 +27,9 @@ const Navbars = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
-          Pages
-        </a>
+        <Link to="/" className="flex items-center">
+          Home
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -36,9 +37,9 @@ const Navbars = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
-          Account
-        </a>
+        <Link to={'/petlist'} className="flex items-center">
+          Pet Listing
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -46,9 +47,9 @@ const Navbars = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
-          Blocks
-        </a>
+        <Link to={'/donation-campaign'} className="flex items-center">
+          Donation Campaigns
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -65,15 +66,20 @@ const Navbars = () => {
 
   return (
     <div className="">
-      <div className="m-6 ">
-        <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
+      <div className=" relative  ">
+        <Navbar className=" w-11/12 mx-auto fixed top-0 left-0 right-0  z-10  max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
           <div className="flex items-center justify-between text-blue-gray-900">
             <Typography
               as="a"
               href="#"
               className="mr-4 cursor-pointer py-1.5 font-medium"
             >
-              Material Tailwind
+              <div className="flex items-center gap-3">
+                <img className="w-16 rounded-full " src={logo} alt="" />
+                <h2 className="text-2xl">
+                  Pet <span className="text-orange-400">Haven</span>
+                </h2>
+              </div>
             </Typography>
             <div className="flex items-center gap-4">
               <div className="mr-4 hidden lg:block">{navList}</div>
@@ -87,7 +93,6 @@ const Navbars = () => {
                         alt=""
                       />
                     </button>
-
                     <div className="">
                       <Dialog
                         open={size === 'xs'}

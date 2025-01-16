@@ -30,7 +30,9 @@ const Signin = () => {
     <div className="mt-10 flex justify-evenly">
       {/* Animation section */}
       {/* TODO */}
+
       <div>Animation section</div>
+      
       {/* form section */}
       <div>
         <Card color="transparent" className="p-7" shadow={true}>
