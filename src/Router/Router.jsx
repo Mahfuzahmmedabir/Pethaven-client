@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Home from '../page/Home/Home';
+import Home from '../page/Home/Home/Home';
 import Main from '../layout/Main';
 import Login from '../page/Login/Login';
 
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/donation-campaign',
-        element: <DonationCampaigns></DonationCampaigns>
+        element: <DonationCampaigns></DonationCampaigns>,
       },
     ],
   },

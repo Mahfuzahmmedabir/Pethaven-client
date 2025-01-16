@@ -46,7 +46,7 @@ const SwiperSlider = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          {' '}
+       
           <div className=" bg-cover bg-center bg-pet-haven4 h-[600px]">
             <div className="py-11 flex items-center justify-center">
               <h2 className="text-white text-9xl">imgss</h2>
