@@ -57,9 +57,9 @@ const Navbars = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <Link to={'dashboard'} className="flex items-center">
           Docs
-        </a>
+        </Link>
       </Typography>
     </ul>
   );

@@ -6,6 +6,8 @@ import Login from '../page/Login/Login';
 import Signin from '../page/SignIn/SignIn';
 import PetList from '../page/PetList/PetList';
 import DonationCampaigns from '../page/DonationCampaigns/DonationCampaigns';
+import Dashboard from '../layout/Dashboard/Dashboard';
+import AddPet from '../page/Dashboard/UserDashboard/AddPet/AddPet';
 
 const router = createBrowserRouter([
   {
@@ -24,16 +26,25 @@ const router = createBrowserRouter([
         path: '/donation-campaign',
         element: <DonationCampaigns></DonationCampaigns>,
       },
+      {
+        path: '/login',
+        element: <Login></Login>,
+      },
+      {
+        path: '/signin',
+        element: <Signin></Signin>,
+      },
     ],
   },
-
   {
-    path: '/login',
-    element: <Login></Login>,
-  },
-  {
-    path: '/signin',
-    element: <Signin></Signin>,
+    path: 'dashboard',
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: 'Add-pet',
+        element: <AddPet></AddPet>,
+      },
+    ],
   },
 ]);
 
