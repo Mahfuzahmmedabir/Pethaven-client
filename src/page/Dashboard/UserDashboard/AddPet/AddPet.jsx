@@ -1,10 +1,6 @@
 import React from 'react';
 const AddPet = () => {
-  return (
-    <div>
-      addpee
-    </div>
-  );
+  return <div className="">addpeeaasdfsdfsfdsdfsdf</div>;
 };
 
 export default AddPet;

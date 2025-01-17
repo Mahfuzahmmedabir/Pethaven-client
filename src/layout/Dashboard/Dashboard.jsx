@@ -24,7 +24,7 @@ const Dashboard = () => {
               <li className="flex">
                 <NavLink
                   className="flex gap-2 items-center"
-                  to={'/dashbord/adminHome'}
+                  to={'/dashboard/add-pet'}
                 >
                   <FaHome className="text-xl"></FaHome>
                   Add pet
@@ -33,7 +33,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className="flex gap-2 items-center"
-                  to={'/dashbord/addItems'}
+                  to={'/dashboard/my-added-pets'}
                 >
                   <FaUtensils FaUtensils className="text-xl"></FaUtensils>
                   My added pets
@@ -42,7 +42,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className="flex gap-2 items-center"
-                  to={'/dashbord/manageitems'}
+                  to={'/dashboard/adoption-request'}
                 >
                   <FaList className="text-xl"></FaList>
                   Adoption Request
@@ -51,7 +51,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className="flex gap-2 items-center"
-                  to={'/dashbord/allUser'}
+                  to={'/dashboard/create-donation-campaing'}
                 >
                   <FaUserTag className="text-xl"></FaUserTag>
                   Create Donation Campaign
@@ -60,7 +60,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className="flex gap-2 items-center"
-                  to={'/dashbord/allUser'}
+                  to={'/dashboard/my-donation-campaigns'}
                 >
                   <FaUserTag className="text-xl"></FaUserTag>
                   My Donation Campaigns
@@ -69,7 +69,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className="flex gap-2 items-center"
-                  to={'/dashbord/allUser'}
+                  to={'/dashboard/my-donations'}
                 >
                   <FaUserTag className="text-xl"></FaUserTag>
                   My Donations
@@ -125,7 +125,9 @@ const Dashboard = () => {
             </div>
             <h2>Profile</h2>
           </div>
-          <Outlet></Outlet>
+          <div className="p-6">
+            <Outlet></Outlet>
+          </div>
         </div>
       </div>
     </div>

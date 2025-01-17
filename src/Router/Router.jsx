@@ -5,9 +5,15 @@ import Login from '../page/Login/Login';
 
 import Signin from '../page/SignIn/SignIn';
 import PetList from '../page/PetList/PetList';
-import DonationCampaigns from '../page/DonationCampaigns/DonationCampaigns';
+import DonationCampaigns from '../page/Dashboard/UserDashboard/MyDonationCampaigns/MyDonationCampaigns';
 import Dashboard from '../layout/Dashboard/Dashboard';
 import AddPet from '../page/Dashboard/UserDashboard/AddPet/AddPet';
+import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
+import MyAddedPets from '../page/Dashboard/UserDashboard/MyAddedPets/MyAddedPets';
+import AdoptionRequest from '../page/Dashboard/UserDashboard/AdoptionRequest/AdoptionRequest';
+import CreateDonation from '../page/Dashboard/UserDashboard/CreateDonation/CreateDonation';
+import MyDonationCampaigns from '../page/Dashboard/UserDashboard/MyDonationCampaigns/MyDonationCampaigns';
+import MyDonations from '../page/Dashboard/UserDashboard/MyDonations/MyDonations';
 
 const router = createBrowserRouter([
   {
@@ -37,12 +43,56 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: 'dashboard',
+    path: '/dashboard',
     element: <Dashboard></Dashboard>,
     children: [
       {
-        path: 'Add-pet',
-        element: <AddPet></AddPet>,
+        path: 'add-pet',
+        element: (
+          <ProtectedRoute>
+            <AddPet></AddPet>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'my-added-pets',
+        element: (
+          <ProtectedRoute>
+            <MyAddedPets></MyAddedPets>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'adoption-request',
+        element: (
+          <ProtectedRoute>
+            <AdoptionRequest></AdoptionRequest>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'create-donation-campaing',
+        element: (
+          <ProtectedRoute>
+            <CreateDonation></CreateDonation>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'my-donation-campaigns',
+        element: (
+          <ProtectedRoute>
+            <MyDonationCampaigns></MyDonationCampaigns>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'my-donations',
+        element: (
+          <ProtectedRoute>
+            <MyDonations></MyDonations>
+          </ProtectedRoute>
+        ),
       },
     ],
   },
