@@ -4,7 +4,7 @@ import Category from '../Category/Category';
 
 const Home = () => {
   return (
-    <div className="py-10">
+    <div className="">
       <SwiperSlider></SwiperSlider>
       <Category></Category>
       <AboutUs></AboutUs>

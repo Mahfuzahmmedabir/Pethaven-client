@@ -58,7 +58,7 @@ const Navbars = () => {
         className="p-1 font-normal"
       >
         <Link to={'dashboard'} className="flex items-center">
-          Docs
+          Dashboard
         </Link>
       </Typography>
     </ul>

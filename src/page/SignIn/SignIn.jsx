@@ -1,8 +1,9 @@
 import useAuth from '../../hooks/useAuth/useAuth';
 import { useForm } from 'react-hook-form';
 import {Card,Input,Checkbox,Typography} from '@material-tailwind/react';
-import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 import { Link } from 'react-router-dom';
+
+import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 const Signin = () => {
   const { createNewUser, updeateProfile } = useAuth();
   const {
@@ -27,6 +28,7 @@ const Signin = () => {
     }
   };
   return (
+
     <div className="mt-10 flex justify-evenly">
       {/* Animation section */}
       {/* TODO */}
@@ -40,6 +42,7 @@ const Signin = () => {
             Sign Up
           </Typography>
           <SocialLogin></SocialLogin>
+          
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="mt-8 mb-2  w-80 max-w-screen-lg sm:w-96"
@@ -70,16 +73,6 @@ const Signin = () => {
               {errors.name && (
                 <span className="-mt-6 text-red-600"> Name is required </span>
               )}
-
-
-
-
-
-
-
-
-
-
               <Typography variant="h6" color="blue-gray" className="-mb-3">
                 Your Email
               </Typography>
