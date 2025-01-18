@@ -14,6 +14,9 @@ import AdoptionRequest from '../page/Dashboard/UserDashboard/AdoptionRequest/Ado
 import CreateDonation from '../page/Dashboard/UserDashboard/CreateDonation/CreateDonation';
 import MyDonationCampaigns from '../page/Dashboard/UserDashboard/MyDonationCampaigns/MyDonationCampaigns';
 import MyDonations from '../page/Dashboard/UserDashboard/MyDonations/MyDonations';
+import AllUser from '../page/Dashboard/AdminPage/AllUser/AllUser';
+import AllPets from '../page/Dashboard/AdminPage/AllPets/AllPets';
+import AllDonations from '../page/Dashboard/AdminPage/AllDonations/AllDonations';
 
 const router = createBrowserRouter([
   {
@@ -42,9 +45,15 @@ const router = createBrowserRouter([
       },
     ],
   },
+
   {
     path: '/dashboard',
-    element: <Dashboard></Dashboard>,
+
+    element: (
+      <ProtectedRoute>
+        <Dashboard></Dashboard>
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: 'add-pet',
@@ -93,6 +102,19 @@ const router = createBrowserRouter([
             <MyDonations></MyDonations>
           </ProtectedRoute>
         ),
+      },
+      // admin route
+      {
+        path: 'all-user',
+        element: <AllUser></AllUser>,
+      },
+      {
+        path: 'all-pets',
+        element: <AllPets></AllPets>,
+      },
+      {
+        path: 'all-donations',
+        element: <AllDonations></AllDonations>
       },
     ],
   },

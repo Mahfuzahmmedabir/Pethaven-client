@@ -7,7 +7,9 @@ import { useState } from 'react';
 import axios from 'axios';
 import useAuth from '../../../../hooks/useAuth/useAuth';
 import UseAxiosOpen from '../../../../hooks/UseAxiosOpen/UseAxiosOpen';
-
+import moment from 'moment';
+import useAxionProtected from '../../../../hooks/useAxiosProtected/useAxionProtected';
+import Swal from 'sweetalert2';
 const image_key = import.meta.env.VITE_IMG_HOSTING;
 console.log(image_key);
 const image_Api = `https://api.imgbb.com/1/upload?key=${image_key}`;
@@ -19,6 +21,7 @@ const options = [
 ];
 const AddPet = () => {
   const { user } = useAuth();
+  const axionProtected = useAxionProtected();
   const [selectedOption, setSelectedOption] = useState(null);
   const object = selectedOption?.value;
   const categorys = { categorys: object };
@@ -29,37 +32,39 @@ const AddPet = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  const date = moment().format('MMMM Do YYYY, h:mm:ss a');
   const onSubmit = async data => {
     const axiosOpen = UseAxiosOpen();
-    const petData = { ...data, category };
-    console.log(petData)
-
-    const images = { image: petData.image[0] };
-
+    const petInfo = { ...data, category };
+    const images = { image: petInfo.image[0] };
     const res = await axiosOpen.post(image_Api, images, {
       headers: {
         'content-type': 'multipart/form-data',
       },
     });
-
     if (res.data.success) {
       const pets = {
         age: data.age,
-        category: petData.category,
+        category: petInfo.category,
         descriptions: data.descriptions,
-        image: data.image,
+        image: res.data.data.display_url,
         location: data.location,
         name: data.name,
         note: data.note,
+        date: date,
+        user: user?.email,
       };
-
-      console.log(pets);
+      axionProtected.post('/pets', pets).then(res => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
     }
-
-    console.log(res.data);
   };
-
   return (
     <div>
       <div>

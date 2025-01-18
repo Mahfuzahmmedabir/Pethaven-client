@@ -10,7 +10,10 @@ import {
   FaUtensils,
 } from 'react-icons/fa';
 import { NavLink, Outlet } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth/useAuth';
 const Dashboard = () => {
+  const { user } = useAuth();
+  const isAdmin = true;
   return (
     <div className="">
       <div className="flex">
@@ -20,101 +23,161 @@ const Dashboard = () => {
             Dashbord
           </div>
           <ul className="menu px-4 leading-10 mt-5">
-            <>
-              <li className="flex">
-                <NavLink
-                  className="flex gap-2 items-center"
-                  to={'/dashboard/add-pet'}
-                >
-                  <FaHome className="text-xl"></FaHome>
-                  Add pet
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className="flex gap-2 items-center"
-                  to={'/dashboard/my-added-pets'}
-                >
-                  <FaUtensils FaUtensils className="text-xl"></FaUtensils>
-                  My added pets
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className="flex gap-2 items-center"
-                  to={'/dashboard/adoption-request'}
-                >
-                  <FaList className="text-xl"></FaList>
-                  Adoption Request
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className="flex gap-2 items-center"
-                  to={'/dashboard/create-donation-campaing'}
-                >
-                  <FaUserTag className="text-xl"></FaUserTag>
-                  Create Donation Campaign
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className="flex gap-2 items-center"
-                  to={'/dashboard/my-donation-campaigns'}
-                >
-                  <FaUserTag className="text-xl"></FaUserTag>
-                  My Donation Campaigns
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className="flex gap-2 items-center"
-                  to={'/dashboard/my-donations'}
-                >
-                  <FaUserTag className="text-xl"></FaUserTag>
-                  My Donations
-                </NavLink>
-              </li>
-              <div className="divider border-b-4"></div>
-              <li>
-                <NavLink to={'/dashbord/Home'}>
-                  <FaHome className="text-xl"></FaHome>
-                  Home
-                </NavLink>
-              </li>{' '}
-              <li>
-                <NavLink to={'/'}>
-                  <FaEmpire className="text-xl"> </FaEmpire>
-                  Menu
-                </NavLink>
-              </li>{' '}
-              <li>
-                <NavLink to={'/'}>
-                  <FaEnvelope className="text-xl"></FaEnvelope>
-                  Contart
-                </NavLink>
-              </li>
-            </>
-            <>
-              <li>
-                <NavLink to={'/dashbord/Home'}>
-                  <FaShoppingCart className="text-xl"></FaShoppingCart>
-                  Home
-                </NavLink>
-              </li>{' '}
-              <li>
-                <NavLink to={'/'}>
-                  <FaEmpire className="text-xl"> </FaEmpire>
-                  Menu
-                </NavLink>
-              </li>{' '}
-              <li>
-                <NavLink to={'/'}>
-                  <FaEnvelope className="text-xl"></FaEnvelope>
-                  Contart
-                </NavLink>
-              </li>
-            </>
+            {isAdmin ? (
+              <>
+                {/* admin */}
+                <div>
+                  <div className="divider border-b-4"></div>
+                  <h2 className="text-3xl ">Admin</h2>
+                  <li className="flex">
+                    <NavLink
+                      className="flex gap-2 items-center"
+                      to={'/dashboard/all-user'}
+                    >
+                      <FaHome className="text-xl"></FaHome>
+                      All User
+                    </NavLink>
+                  </li>
+                  <li className="flex">
+                    <NavLink
+                      className="flex gap-2 items-center"
+                      to={'/dashboard/all-pets'}
+                    >
+                      {/* userDashboard */}
+                      <FaHome className="text-xl"></FaHome>
+                      All Pets
+                    </NavLink>
+                  </li>
+                  <li className="flex">
+                    <NavLink
+                      className="flex gap-2 items-center"
+                      to={'/dashboard/all-donations'}
+                    >
+                      <FaHome className="text-xl"></FaHome>
+                      All Donations
+                    </NavLink>
+                  </li>
+                </div>
+
+                {/* <div>
+                  <li className="flex">
+                    <NavLink
+                      className="flex gap-2 items-center"
+                      to={'/dashboard/add-pet'}
+                    >
+                      <FaHome className="text-xl"></FaHome>
+                      Add pet
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className="flex gap-2 items-center"
+                      to={'/dashboard/my-added-pets'}
+                    >
+                      <FaUtensils FaUtensils className="text-xl"></FaUtensils>
+                      My added pets
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className="flex gap-2 items-center"
+                      to={'/dashboard/adoption-request'}
+                    >
+                      <FaList className="text-xl"></FaList>
+                      Adoption Request
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className="flex gap-2 items-center"
+                      to={'/dashboard/create-donation-campaing'}
+                    >
+                      <FaUserTag className="text-xl"></FaUserTag>
+                      Create Donation Campaign
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className="flex gap-2 items-center"
+                      to={'/dashboard/my-donation-campaigns'}
+                    >
+                      <FaUserTag className="text-xl"></FaUserTag>
+                      My Donation Campaigns
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className="flex gap-2 items-center"
+                      to={'/dashboard/my-donations'}
+                    >
+                      <FaUserTag className="text-xl"></FaUserTag>
+                      My Donations
+                    </NavLink>
+                  </li>
+                </div> */}
+              </>
+            ) : (
+              <>
+                <div>
+                  <li className="flex">
+                    <NavLink
+                      className="flex gap-2 items-center"
+                      to={'/dashboard/add-pet'}
+                    >
+                      <FaHome className="text-xl"></FaHome>
+                      Add pet
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className="flex gap-2 items-center"
+                      to={'/dashboard/my-added-pets'}
+                    >
+                      <FaUtensils FaUtensils className="text-xl"></FaUtensils>
+                      My added pets
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className="flex gap-2 items-center"
+                      to={'/dashboard/adoption-request'}
+                    >
+                      <FaList className="text-xl"></FaList>
+                      Adoption Request
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className="flex gap-2 items-center"
+                      to={'/dashboard/create-donation-campaing'}
+                    >
+                      <FaUserTag className="text-xl"></FaUserTag>
+                      Create Donation Campaign
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className="flex gap-2 items-center"
+                      to={'/dashboard/my-donation-campaigns'}
+                    >
+                      <FaUserTag className="text-xl"></FaUserTag>
+                      My Donation Campaigns
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className="flex gap-2 items-center"
+                      to={'/dashboard/my-donations'}
+                    >
+                      <FaUserTag className="text-xl"></FaUserTag>
+                      My Donations
+                    </NavLink>
+                  </li>
+                </div>
+              </>
+            )}
+
+            {/* admim Link */}
           </ul>
         </div>
         {/* outlet */}
@@ -123,7 +186,13 @@ const Dashboard = () => {
             <div>
               <FaBars></FaBars>
             </div>
-            <h2>Profile</h2>
+            <div>
+              <img
+                className="w-10 h-10 rounded-full"
+                src={user?.photoURL}
+                alt=""
+              />
+            </div>
           </div>
           <div className="p-6">
             <Outlet></Outlet>

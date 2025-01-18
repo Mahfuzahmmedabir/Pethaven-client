@@ -1,40 +1,49 @@
 import useAuth from '../../hooks/useAuth/useAuth';
 import { useForm } from 'react-hook-form';
-import {Card,Input,Checkbox,Typography} from '@material-tailwind/react';
-import { Link } from 'react-router-dom';
-
+import { Card, Input, Checkbox, Typography } from '@material-tailwind/react';
+import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
+import Swal from 'sweetalert2';
+import UseAxiosOpen from '../../hooks/UseAxiosOpen/UseAxiosOpen';
 const Signin = () => {
+  const axiosOpen = UseAxiosOpen();
+  const navigat = useNavigate();
   const { createNewUser, updeateProfile } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = async (data) => {
-    console.log(data)
+  const onSubmit = async data => {
     const { email, password, name, photo } = data;
-    console.log(email, password);
     try {
-      await createNewUser(email, password);
-      alert('yeay hooo')
-      updeateProfile(name, photo)
-        .then(() => {
-        alert('updeat')
-      }) 
-
+      await createNewUser(email, password).then(result => {
+        const useInfor = {
+          email,
+          name,
+          photo,
+        };
+        axiosOpen.post('/user', useInfor).then(res => {
+          if (res.data) {
+            Swal.fire('SweetAlert2 is working!');
+          }
+        });
+      });
+      await updeateProfile(name, photo).then(() => {
+   
+        navigat('/');
+      });
     } catch (error) {
       console.error('Google login error:', error.message);
     }
   };
   return (
-
     <div className="mt-10 flex justify-evenly">
       {/* Animation section */}
       {/* TODO */}
 
       <div>Animation section</div>
-      
+
       {/* form section */}
       <div>
         <Card color="transparent" className="p-7" shadow={true}>
@@ -42,7 +51,7 @@ const Signin = () => {
             Sign Up
           </Typography>
           <SocialLogin></SocialLogin>
-          
+
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="mt-8 mb-2  w-80 max-w-screen-lg sm:w-96"
@@ -66,7 +75,7 @@ const Signin = () => {
               <Input
                 {...register('photo', { required: true })}
                 size="lg"
-                type='url'
+                type="url"
                 placeholder="Your Photo Url"
                 className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
               />

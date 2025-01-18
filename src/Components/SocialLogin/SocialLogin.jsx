@@ -2,15 +2,42 @@ import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { SiFacebook } from 'react-icons/si';
 import useAuth from '../../hooks/useAuth/useAuth';
+import UseAxiosOpen from '../../hooks/UseAxiosOpen/UseAxiosOpen';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 const SocialLogin = () => {
   const { loginWithGoogle, loginWithFacebook } = useAuth();
+  const axiosOpen = UseAxiosOpen()
+  const navigate = useNavigate()
 
   const loginWithGooglePopu = () =>{
     loginWithGoogle()
       .then(res => {
-      console.log(res.user)
+        console.log(res.user)
+        const userInfo = {
+          email: res.user?.email,
+          name: res.user?.displayName,
+          photo: res.user?.photoURL,
+        };
+        axiosOpen.post('/user', userInfo)
+          .then(result => {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+            navigate('/')
+        })
+        
+        
+        
+
     })
   }
+
+
   const loginWithFacebookPopu = () => {
     loginWithFacebook()
       .then(res => {

@@ -112,18 +112,18 @@ const Navbars = () => {
                           </h2>
                         </DialogHeader>
                         <DialogBody>
-                          <div className="flex flex-col justify-center items-center">
-                            <Link>home </Link>
-                            <Link>home </Link>
-                            <Link>home </Link>
-                            <Link>home </Link>
-                            <Link>home </Link>
-                            <Link>home </Link>
+                          <div className=" text-center -mt-5 text-xl ">
+                            <Link to={'dashboard'}>Dashboard </Link>
                           </div>
 
-                          <button className="w-full" onClick={logOut}>
-                            Log Out
-                          </button>
+                          <div className="text-center">
+                            <button
+                              className="py-2 px-4 mt-5 hover:bg-red-700 hover:text-white rounded-md border"
+                              onClick={logOut}
+                            >
+                              Log Out
+                            </button>
+                          </div>
                         </DialogBody>
                       </Dialog>
                     </div>
