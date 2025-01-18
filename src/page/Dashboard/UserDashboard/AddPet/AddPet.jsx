@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import '../../../../index.css';
 import Select from 'react-select';
 import { useState } from 'react';
+import axios from 'axios';
+import useAuth from '../../../../hooks/useAuth/useAuth';
+import UseAxiosOpen from '../../../../hooks/UseAxiosOpen/UseAxiosOpen';
 
 const image_key = import.meta.env.VITE_IMG_HOSTING;
-
 console.log(image_key);
 const image_Api = `https://api.imgbb.com/1/upload?key=${image_key}`;
 
@@ -16,6 +18,7 @@ const options = [
   { value: 'rabbit', label: 'Rabbit' },
 ];
 const AddPet = () => {
+  const { user } = useAuth();
   const [selectedOption, setSelectedOption] = useState(null);
   const object = selectedOption?.value;
   const categorys = { categorys: object };
@@ -26,10 +29,35 @@ const AddPet = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = async data => {
-    const petDatas = { ...data, category };
 
-    console.log(petDatas);
+  const onSubmit = async data => {
+    const axiosOpen = UseAxiosOpen();
+    const petData = { ...data, category };
+    console.log(petData)
+
+    const images = { image: petData.image[0] };
+
+    const res = await axiosOpen.post(image_Api, images, {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    });
+
+    if (res.data.success) {
+      const pets = {
+        age: data.age,
+        category: petData.category,
+        descriptions: data.descriptions,
+        image: data.image,
+        location: data.location,
+        name: data.name,
+        note: data.note,
+      };
+
+      console.log(pets);
+    }
+
+    console.log(res.data);
   };
 
   return (
@@ -49,7 +77,7 @@ const AddPet = () => {
                   <Input
                     {...register('image', { required: true })}
                     size="lg"
-                    name="photo"
+                    name="image"
                     type="file"
                     className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                   />
@@ -114,14 +142,14 @@ const AddPet = () => {
                     </span>
                   )}
                   <Typography variant="h6" color="blue-gray" className="py-3">
-                    Short description,
+                    Small note,
                   </Typography>
                   <textarea
-                    {...register('description', { required: true })}
+                    {...register('note', { required: true })}
                     size="lg"
                     type="textarea"
                     placeholder="Write you description"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900 border p-3 w-full  "
+                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900 border p-3 lg:w-full rounded-md "
                   />
                   {errors.name && (
                     <span className="-mt-6 text-red-600">
@@ -129,14 +157,14 @@ const AddPet = () => {
                     </span>
                   )}
                   <Typography variant="h6" color="blue-gray" className="py-3">
-                    Short description,
+                    Description,
                   </Typography>
                   <textarea
                     {...register('descriptions', { required: true })}
                     size="lg"
                     type="textarea"
                     placeholder="Write you description"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900 lg:w-full border h-40 p-3 "
+                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900 lg:w-full rounded-md border h-40 p-3 "
                   />
                   {errors.name && (
                     <span className="-mt-6 text-red-600">
