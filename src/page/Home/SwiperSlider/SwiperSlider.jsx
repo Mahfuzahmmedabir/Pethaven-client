@@ -14,7 +14,7 @@ const SwiperSlider = () => {
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 2500,
+          delay: 100000,
           disableOnInteraction: false,
         }}
         pagination={{

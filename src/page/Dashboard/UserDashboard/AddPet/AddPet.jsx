@@ -18,6 +18,8 @@ const options = [
   { value: 'dog', label: 'Dog' },
   { value: 'cat', label: 'Cat' },
   { value: 'rabbit', label: 'Rabbit' },
+  { value: 'fish', label: 'Fish' },
+  { value: 'birds', label: 'Birds' },
 ];
 const AddPet = () => {
   const { user } = useAuth();
