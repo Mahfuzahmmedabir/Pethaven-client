@@ -13,7 +13,10 @@ import { NavLink, Outlet } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth/useAuth';
 const Dashboard = () => {
   const { user } = useAuth();
+  console.log(user)
   const isAdmin = true;
+
+
   return (
     <div className="">
       <div className="flex">
@@ -23,7 +26,7 @@ const Dashboard = () => {
             Dashbord
           </div>
           <ul className="menu px-4 leading-10 mt-5">
-            {isAdmin ? (
+            {user.role ==='admin' ? (
               <>
                 {/* admin */}
                 <div>
