@@ -86,7 +86,6 @@ const Category = () => {
             <CategoryCard item={pets}></CategoryCard>
           </>
         )}
-
         <TabsBody>
           {data.map(({ value, desc }) => (
             <TabPanel key={value} value={value}>

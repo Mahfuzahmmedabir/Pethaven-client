@@ -23,7 +23,7 @@ const Dashboard = () => {
             Dashbord
           </div>
           <ul className="menu px-4 leading-10 mt-5">
-            {!isAdmin ? (
+            {isAdmin ? (
               <>
                 {/* admin */}
                 <div>

@@ -6,7 +6,6 @@ const Card = ({ item }) => {
   return (
     <div>
       <img src={image} alt="" />
-      
     </div>
   );
 };

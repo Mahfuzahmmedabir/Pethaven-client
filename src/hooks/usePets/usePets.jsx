@@ -3,7 +3,7 @@ import UseAxiosOpen from '../UseAxiosOpen/UseAxiosOpen';
 
 const usePets = () => {
   const axioOpen = UseAxiosOpen()
-  const { data: pets = [],isLoading } = useQuery({
+  const { data: pets = [],isLoading, } = useQuery({
     queryKey: ['pets'],
     queryFn: async () => {
       const res = await axioOpen.get('/pets');

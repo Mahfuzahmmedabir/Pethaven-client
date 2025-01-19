@@ -11,7 +11,7 @@ import {
 } from '@material-tailwind/react';
 import '../../App.css';
 
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth/useAuth';
 
 const Navbars = () => {
@@ -28,9 +28,9 @@ const Navbars = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link to="/" className="flex items-center">
+        <NavLink to="/" className="flex items-center">
           Home
-        </Link>
+        </NavLink>
       </Typography>
       <Typography
         as="li"
@@ -38,9 +38,9 @@ const Navbars = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link to={'/petlist'} className="flex items-center">
+        <NavLink to={'/petlist'} className="flex items-center">
           Pet Listing
-        </Link>
+        </NavLink>
       </Typography>
       <Typography
         as="li"
@@ -48,9 +48,9 @@ const Navbars = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link to={'/donation-campaign'} className="flex items-center">
+        <NavLink to={'/donation-campaign'} className="flex items-center">
           Donation Campaigns
-        </Link>
+        </NavLink>
       </Typography>
       <Typography
         as="li"
@@ -58,9 +58,9 @@ const Navbars = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link to={'dashboard'} className="flex items-center">
+        <NavLink to={'dashboard'} className="flex items-center">
           Dashboard
-        </Link>
+        </NavLink>
       </Typography>
     </ul>
   );
