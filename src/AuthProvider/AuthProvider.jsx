@@ -11,6 +11,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import { createContext } from 'react';
 import { auth } from '../firebase/firebase.init';
+import UseAxiosOpen from '../hooks/UseAxiosOpen/UseAxiosOpen';
 export const AuthContext = createContext(null);
 
 const googleProvider = new GoogleAuthProvider();
@@ -18,6 +19,7 @@ const facebookProvider = new FacebookAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [lodging, setLoading] = useState(true);
+  const axiosOpen = UseAxiosOpen()
   const createNewUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
@@ -50,6 +52,18 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
       setUser(currentUser);
       console.log(currentUser);
+      if (currentUser) {
+        const userInfo = { email: currentUser.email }
+        console.log(userInfo)
+        axiosOpen.post('/jwt', userInfo)
+          .then(res => {
+            if (res.data.token) {
+              localStorage.setItem('access-token', res.data.token)
+            } 
+        })
+      } else {
+        localStorage.removeItem('access-token');
+      }
       return () => {
         unsubscribe();
       };

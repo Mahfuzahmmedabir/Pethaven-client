@@ -46,15 +46,17 @@ const AllUser = () => {
   const { data: user = [], refetch } = useQuery({
     queryKey: ['user'],
     queryFn: async () => {
-      const result = await axionProtected.get('/user');
+      const result = await axionProtected.get('/user', {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('access-token')}`,
+        },
+      });
       console.log(result.data);
-
       return result.data;
     },
   });
   console.log(user);
   const handealMakeAdmin = id => {
-  
     axionProtected.patch(`/user/admin/${id}`).then(res => {
       console.log(res.data);
       refetch()
