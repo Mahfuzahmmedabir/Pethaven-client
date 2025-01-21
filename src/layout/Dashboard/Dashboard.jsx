@@ -1,25 +1,17 @@
 import React from 'react';
-import {
-  FaBars,
-  FaEmpire,
-  FaEnvelope,
-  FaHome,
-  FaList,
-  FaShoppingCart,
-  FaUserTag,
-  FaUtensils,
-} from 'react-icons/fa';
+import { FaBars, FaHome, FaList, FaUserTag, FaUtensils } from 'react-icons/fa';
 import { NavLink, Outlet } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth/useAuth';
+import useAdmin from '../../hooks/useAdmin/useAdmin';
 const Dashboard = () => {
   const { user } = useAuth();
-  // console.log(user)
-  const isAdmin = true;
+  const [isAdmin] = useAdmin(); 
+  console.log(isAdmin);
 
   return (
     <div className="">
       <div className="flex">
-        {/* links */}
+        {/* links */ }
         <div className="w-80 min-h-screen shadow-2xl">
           <div className="py-4 text-center bg-blue-gray-600 font-semibold text-2xl text-white">
             Dashbord
@@ -28,7 +20,7 @@ const Dashboard = () => {
             {isAdmin ? (
               <>
                 {/* admin */}
-                <div>
+                <div className="border-b-2">
                   <div className="divider border-b-4"></div>
                   <h2 className="text-3xl ">Admin</h2>
                   <li className="flex">
@@ -60,8 +52,9 @@ const Dashboard = () => {
                     </NavLink>
                   </li>
                 </div>
+                {/* router */}
 
-                {/* <div>
+                <div>
                   <li className="flex">
                     <NavLink
                       className="flex gap-2 items-center"
@@ -116,9 +109,11 @@ const Dashboard = () => {
                       My Donations
                     </NavLink>
                   </li>
-                </div> */}
+                </div>
               </>
             ) : (
+              // user router
+
               <>
                 <div>
                   <li className="flex">

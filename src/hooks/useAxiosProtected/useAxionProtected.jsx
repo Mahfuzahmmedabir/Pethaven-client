@@ -7,8 +7,7 @@ const axiosProtected = axios.create({
 });
 
 const useAxiosProtected = () => {
-  
-  const { logOut } = useAuth()
+  const { logOut } = useAuth();
   const navigate = useNavigate();
   axiosProtected.interceptors.request.use(
     function (config) {
@@ -26,13 +25,12 @@ const useAxiosProtected = () => {
       console.log(' status 200 ');
       return response;
     },
-     async (error) => {
+    async error => {
       console.log('status err', error);
-      const status = error.response.status;
-      
-       if (status === 401 || status === 403) {
-         await logOut()
-         navigate('/login')
+      const status = error?.response?.status;
+      if (status === 401 || status === 403) {
+        await logOut();
+        navigate('/login');
       }
       return Promise.reject(error);
     }

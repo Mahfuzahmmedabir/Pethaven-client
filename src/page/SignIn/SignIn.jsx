@@ -23,7 +23,9 @@ const Signin = () => {
           name,
           photo,
         };
-        axiosOpen.post('/user', useInfor).then(res => {
+        axiosOpen.post('/user', useInfor)
+          
+          .then(res => {
           if (res.data) {
             Swal.fire('SweetAlert2 is working!');
           }

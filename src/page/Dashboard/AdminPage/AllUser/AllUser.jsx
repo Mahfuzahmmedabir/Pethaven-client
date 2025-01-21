@@ -39,15 +39,15 @@ const TABS = [
   },
 ];
 
-const TABLE_HEAD = ['Member', 'Role', 'Status', 'Employed', 'delete'];
+const TABLE_HEAD = ['Member', '', 'Status', 'Role', 'delete'];
 
 const AllUser = () => {
-   const axiosProtected = useAxiosProtected()
+  const axiosProtected = useAxiosProtected();
   const { data: user = [], refetch } = useQuery({
     queryKey: ['user'],
     queryFn: async () => {
-      const result = await axiosProtected.get('/user')
-      // console.log(result.data);
+      const result = await axiosProtected.get('/user');
+      console.log(result.data);
       return result.data;
     },
   });
@@ -198,7 +198,7 @@ const AllUser = () => {
                             color="blue-gray"
                             className="font-normal"
                           >
-                            {`User`}
+                            {``}
                           </Typography>
                           <Typography
                             variant="small"
