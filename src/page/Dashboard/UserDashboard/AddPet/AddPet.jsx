@@ -1,15 +1,15 @@
 import { useForm } from 'react-hook-form';
 import { Card, Input, Checkbox, Typography } from '@material-tailwind/react';
-import { Link } from 'react-router-dom';
 import '../../../../index.css';
 import Select from 'react-select';
 import { useState } from 'react';
-import axios from 'axios';
+
 import useAuth from '../../../../hooks/useAuth/useAuth';
 import UseAxiosOpen from '../../../../hooks/UseAxiosOpen/UseAxiosOpen';
 import moment from 'moment';
-import useAxionProtected from '../../../../hooks/useAxiosProtected/useAxionProtected';
+
 import Swal from 'sweetalert2';
+import useAxiosProtected from '../../../../hooks/useAxiosProtected/useAxionProtected';
 const image_key = import.meta.env.VITE_IMG_HOSTING;
 console.log(image_key);
 const image_Api = `https://api.imgbb.com/1/upload?key=${image_key}`;
@@ -23,7 +23,7 @@ const options = [
 ];
 const AddPet = () => {
   const { user } = useAuth();
-  const axionProtected = useAxionProtected();
+  const axiosProtected = useAxiosProtected()
   const [selectedOption, setSelectedOption] = useState(null);
   const object = selectedOption?.value;
   const categorys = { categorys: object };
@@ -56,7 +56,7 @@ const AddPet = () => {
         date: date,
         user: user?.email,
       };
-      axionProtected.post('/pets', pets).then(res => {
+      axiosProtected.post('/pets', pets).then(res => {
         Swal.fire({
           position: 'top-end',
           icon: 'success',

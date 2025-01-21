@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import useAxionProtected from '../../../../hooks/useAxiosProtected/useAxionProtected';
+
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { PencilIcon, UserPlusIcon } from '@heroicons/react/24/solid';
 import {
@@ -19,10 +19,10 @@ import {
   IconButton,
   Tooltip,
 } from '@material-tailwind/react';
-import { TfiControlShuffle } from 'react-icons/tfi';
-import { FaDeleteLeft } from 'react-icons/fa6';
+
 import { FiDelete } from 'react-icons/fi';
 import Swal from 'sweetalert2';
+import useAxiosProtected from '../../../../hooks/useAxiosProtected/useAxionProtected';
 
 const TABS = [
   {
@@ -42,26 +42,21 @@ const TABS = [
 const TABLE_HEAD = ['Member', 'Role', 'Status', 'Employed', 'delete'];
 
 const AllUser = () => {
-  const axionProtected = useAxionProtected();
+   const axiosProtected = useAxiosProtected()
   const { data: user = [], refetch } = useQuery({
     queryKey: ['user'],
     queryFn: async () => {
-      const result = await axionProtected.get('/user', {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem('access-token')}`,
-        },
-      });
-      console.log(result.data);
+      const result = await axiosProtected.get('/user')
+      // console.log(result.data);
       return result.data;
     },
   });
-  console.log(user);
+
   const handealMakeAdmin = id => {
-    axionProtected.patch(`/user/admin/${id}`).then(res => {
+    axiosProtected.patch(`/user/admin/${id}`).then(res => {
       console.log(res.data);
-      refetch()
+      refetch();
       if (res.data.modifiedCount > 0) {
-        
       }
     });
   };
@@ -76,7 +71,7 @@ const AllUser = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        axionProtected.delete(`/user/${id}`).then(res => {
+        axiosProtected.delete(`/user/${id}`).then(res => {
           console.log(res.data);
           refetch();
           Swal.fire({

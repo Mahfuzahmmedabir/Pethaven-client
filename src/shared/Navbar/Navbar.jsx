@@ -64,7 +64,6 @@ const Navbars = () => {
       </Typography>
     </ul>
   );
-
   return (
     <div className="">
       <div className=" relative  ">
@@ -77,7 +76,7 @@ const Navbars = () => {
             >
               <div className="flex items-center gap-3">
                 <img className="w-16 rounded-full " src={logo} alt="" />
-                <h2 className="text-2xl">
+                <h2 className="text-2xl font-bold">
                   Pet <span className="text-orange-400">Haven</span>
                 </h2>
               </div>

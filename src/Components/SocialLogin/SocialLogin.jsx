@@ -7,44 +7,36 @@ import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 const SocialLogin = () => {
   const { loginWithGoogle, loginWithFacebook } = useAuth();
-  const axiosOpen = UseAxiosOpen()
-  const navigate = useNavigate()
+  const axiosOpen = UseAxiosOpen();
+  const navigate = useNavigate();
 
-  const loginWithGooglePopu = () =>{
-    loginWithGoogle()
-      .then(res => {
-        console.log(res.user)
-        const userInfo = {
-          email: res.user?.email,
-          name: res.user?.displayName,
-          photo: res.user?.photoURL,
-        };
-        axiosOpen.post('/user', userInfo)
-          .then(result => {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Your work has been saved',
-            showConfirmButton: false,
-            timer: 1500,
-          });
-            navigate('/')
-        })
-        
-        
-        
+  const loginWithGooglePopu = () => {
+    loginWithGoogle().then(res => {
+      console.log(res.user);
+      const userInfo = {
+        email: res.user?.email,
+        name: res.user?.displayName,
+        photo: res.user?.photoURL,
+      };
+      axiosOpen.post('/user', userInfo)
+        .then(result => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 1500,
+        });
 
-    })
-  }
-
-
+      })
+      navigate('/');
+    });
+  };
   const loginWithFacebookPopu = () => {
-    loginWithFacebook()
-      .then(res => {
+    loginWithFacebook().then(res => {
       console.log(res.user);
     });
-  }
-
+  };
 
   return (
     <div className="border-b-2 py-6">
