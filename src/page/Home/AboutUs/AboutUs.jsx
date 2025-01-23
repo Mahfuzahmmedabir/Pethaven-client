@@ -1,9 +1,27 @@
 import React from 'react';
-
+import aboutIgm from '../../../assets/jametlene-reskp-VDrErQEF9e4-unsplash.jpg';
 const AboutUs = () => {
   return (
     <div>
-      About Us
+      <h2 className="text-center text-4xl ">About Us</h2>
+      <p className="text-center ">
+        We help shelters and rescue groups save pets.<br></br> Learn more and
+        meet our team.
+      </p>
+      <div className="flex mt-10">
+        <div className="w-6/12 bg-light-green-600">
+          <div className=" py-44 w-96  mx-auto   ">
+            <h2 className="text-4xl  text-white font-bold  ">About us</h2>
+            <p className="text-white ">
+              We help shelters and rescue groups save pets.<br></br> Learn more
+              and meet our team.
+            </p>
+          </div>
+        </div>
+        <div className="w-6/12">
+          <img src={aboutIgm} alt="" />
+        </div>
+      </div>
     </div>
   );
 };

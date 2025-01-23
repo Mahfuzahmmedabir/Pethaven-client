@@ -19,6 +19,9 @@ import {
   Input,
 } from '@material-tailwind/react';
 import { Link } from 'react-router-dom';
+import useAxiosProtected from '../../../../hooks/useAxiosProtected/useAxionProtected';
+import Swal from 'sweetalert2';
+
 const TABLE_HEAD = ['Ptes', '', 'Publish', 'Pandin', 'Delete', 'Edit Pet', ''];
 
 const TABLE_ROWS = [
@@ -35,11 +38,33 @@ const TABLE_ROWS = [
 ];
 
 const AllPets = () => {
+  const [pets, refetch] = usePets();
+  const axiosProtected = useAxiosProtected();
 
-
-  const [pets] = usePets();
- 
-
+  const handealDelete = id => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then(result => {
+      if (result.isConfirmed) {
+        axiosProtected.delete(`/pet/${id}`)
+          .then(res => {
+            console.log(res.data)
+            refetch();
+          Swal.fire({
+            title: 'Deleted!',
+            text: 'Your file has been deleted.',
+            icon: 'success',
+          });
+        });
+      }
+    });
+  };
 
   return (
     <div>
@@ -110,7 +135,7 @@ const AllPets = () => {
                   const classes = isLast
                     ? 'p-4'
                     : 'p-4 border-b border-blue-gray-50';
-                  
+
                   return (
                     <tr key={_id}>
                       <td className={classes}>
@@ -167,7 +192,9 @@ const AllPets = () => {
                       <td className={classes}>
                         <div className="flex items-center gap-3">
                           <div className="h-9  border rounded-md  p-1 hover:bg-red-600 hover:text-white">
-                            Delete
+                            <button onClick={() => handealDelete(_id)}>
+                              Delete
+                            </button>
                           </div>
                           <div className="flex flex-col">
                             <Typography

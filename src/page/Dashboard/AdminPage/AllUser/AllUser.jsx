@@ -69,7 +69,8 @@ const AllUser = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        axiosProtected.delete(`/user/${id}`).then(res => {
+        axiosProtected.delete(`/user/${id}`).
+          then(res => {
           console.log(res.data);
           refetch();
           Swal.fire({

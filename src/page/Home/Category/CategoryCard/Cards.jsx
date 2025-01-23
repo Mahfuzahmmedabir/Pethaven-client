@@ -10,7 +10,7 @@ import {
 import { Link } from 'react-router-dom';
 
 const Cards = ({ item }) => {
-  const { image, name, note, category, _id } = item;
+  const { image, name, note, location, category, _id } = item;
   return (
     <div className="mt-14">
       <Card className="mt-6 ">
@@ -26,13 +26,13 @@ const Cards = ({ item }) => {
             {category}
           </Typography>
           <Typography>
-            <span className="font-semibold">Note: </span>
-            {note}
+            <span className="font-semibold">Location: </span>
+            {location}
           </Typography>
         </CardBody>
         <CardFooter className="pt-0">
           <Link
-            className="bg-black text-white py-3 rounded-md px-3"
+            className="bg-light-green-700 text-white py-3 rounded-md px-3"
             to={`/pet-datails/${_id}`}
           >
             Details
