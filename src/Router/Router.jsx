@@ -19,7 +19,8 @@ import AllPets from '../page/Dashboard/AdminPage/AllPets/AllPets';
 import AllDonations from '../page/Dashboard/AdminPage/AllDonations/AllDonations';
 import PetDatails from '../Components/PetDetails/PetDatails';
 import CreateDonationCampaigns from '../page/Dashboard/UserDashboard/DonationCampaign/CreateDonationCampaigns';
-import DonationCampaign from '../page/DonationCampaign/DonationCampaign';
+import DonationCam from '../page/DonationCam/DonationCam';
+
 
 const router = createBrowserRouter([
   {
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/donation-campaign',
-        element: <DonationCampaign></DonationCampaign>,
+        element: <DonationCam></DonationCam>,
       },
       {
         path: '/login',
