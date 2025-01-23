@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import { Card, Typography } from '@material-tailwind/react';
 const PetDatails = () => {
   const pets = useLoaderData();
-  console.log(pets);
+  pets;
   const {
     image,
     name,

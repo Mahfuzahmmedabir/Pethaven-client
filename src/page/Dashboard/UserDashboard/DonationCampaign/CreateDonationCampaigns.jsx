@@ -1,3 +1,4 @@
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Card, Input, Typography } from '@material-tailwind/react';
 import '../../../../index.css';
@@ -9,54 +10,50 @@ import moment from 'moment';
 import Swal from 'sweetalert2';
 import useAxiosProtected from '../../../../hooks/useAxiosProtected/useAxionProtected';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 const image_key = import.meta.env.VITE_IMG_HOSTING;
-image_key;
+console.log(image_key);
 const image_Api = `https://api.imgbb.com/1/upload?key=${image_key}`;
 
-const options = [
-  { value: 'dog', label: 'Dog' },
-  { value: 'cat', label: 'Cat' },
-  { value: 'rabbit', label: 'Rabbit' },
-  { value: 'fish', label: 'Fish' },
-  { value: 'birds', label: 'Birds' },
-];
-const AddPet = () => {
-  const { user } = useAuth();
+const CreateDonationCampaigns = () => {
+  const { isPending } = useQuery({
+    queryKey: ['isLogin'],
+    
+    
+  })
+    
+  
+  const { user, lodging } = useAuth();
   const axiosProtected = useAxiosProtected();
-  const [selectedOption, setSelectedOption] = useState(null);
-  const object = selectedOption?.value;
-  const categorys = { categorys: object };
-  const { categorys: category } = categorys;
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const date = moment().format('MMMM Do YYYY, h:mm:ss a');
+  const date = moment().format('MMMM Do YYYY, h:mm:ss ');
   const onSubmit = async data => {
     const axiosOpen = UseAxiosOpen();
-    const petInfo = { ...data, category };
+    const petInfo = { ...data };
+    const lastDates = petInfo.date
     const images = { image: petInfo.image[0] };
     const res = await axiosOpen.post(image_Api, images, {
       headers: {
         'content-type': 'multipart/form-data',
       },
     });
+    console.log('hellsow')
     if (res.data.success) {
       const pets = {
-        age: data.age,
-        category: petInfo.category,
         descriptions: data.descriptions,
         image: res.data.data.display_url,
-        location: data.location,
-        name: data.name,
         note: data.note,
         date: date,
         user: user?.email,
+        lastDate: lastDates,
       };
-
-      axiosProtected.post('/pets', pets).then(res => {
+      axiosProtected.post('/donation', pets)
+        .then(res => {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -65,9 +62,10 @@ const AddPet = () => {
           timer: 1500,
         });
       });
-      navigate('/');
+      // navigate('/');
     }
   };
+
   return (
     <div>
       <div>
@@ -95,62 +93,42 @@ const AddPet = () => {
                     </span>
                   )}
                   <Typography variant="h6" color="blue-gray" className="py-3">
-                    Pet Name
+                    Donation Amount
                   </Typography>
                   <Input
-                    {...register('name', { required: true })}
-                    size="lg"
-                    placeholder="Pet Name"
-                    className=" py-10 !border-t-blue-gray-200 focus:!border-t-gray-900"
-                  />
-                  {errors.name && (
-                    <span className="-mt-6 text-red-600">Name is required</span>
-                  )}
-                  <Typography variant="h6" color="blue-gray" className="py-3">
-                    Pet age
-                  </Typography>
-                  <Input
-                    {...register('age', { required: true })}
+                    {...register('amount', { required: true })}
                     size="lg"
                     type="number"
-                    placeholder="Your pet age"
-                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                  />
-                  {errors.age && (
-                    <span className="-mt-6 text-red-600">
-                      {' '}
-                      Age is required{' '}
-                    </span>
-                  )}
-                  <Typography variant="h6" color="blue-gray" className="py-3">
-                    Pet Category
-                  </Typography>
-                  <Select
-                    defaultValue={selectedOption}
-                    onChange={setSelectedOption}
-                    options={options}
-                    required={true}
-                  />
-                </div>
-
-                <div className="w-6/12">
-                  <Typography variant="h6" color="blue-gray" className="py-3">
-                    Pet location
-                  </Typography>
-                  <Input
-                    {...register('location', { required: true })}
-                    size="lg"
-                    placeholder="Location"
+                    placeholder="Amount"
                     className=" py-10 !border-t-blue-gray-200 focus:!border-t-gray-900"
                   />
-                  {errors.location && (
+                  {errors.amount && (
                     <span className="-mt-6 text-red-600">
                       {' '}
                       Name is required{' '}
                     </span>
                   )}
+
                   <Typography variant="h6" color="blue-gray" className="py-3">
-                    Small note,
+                    Last date of donation
+                  </Typography>
+                  <Input
+                    {...register('date', { required: true })}
+                    size="lg"
+                    type="date"
+                    placeholder="Location"
+                    className=" py-10 !border-t-blue-gray-200 focus:!border-t-gray-900"
+                  />
+                  {errors.date && (
+                    <span className="-mt-6 text-red-600">
+                      {' '}
+                      Name is required{' '}
+                    </span>
+                  )}
+                </div>
+                <div className="w-6/12">
+                  <Typography variant="h6" color="blue-gray" className="py-3">
+                    Small note
                   </Typography>
                   <textarea
                     {...register('note', { required: true })}
@@ -165,7 +143,7 @@ const AddPet = () => {
                     </span>
                   )}
                   <Typography variant="h6" color="blue-gray" className="py-3">
-                    Description,
+                    Description
                   </Typography>
                   <textarea
                     {...register('descriptions', { required: true })}
@@ -181,9 +159,9 @@ const AddPet = () => {
                   )}
                 </div>
               </div>
-              <div className="bg-black py-2 rounded-xl lg:-mt-10 w-36 text-center ">
+              <div className="bg-light-green-800 py-2 rounded-xl lg:-mt-10 w-32 text-center ">
                 <button className=" font-bold text-white mx-auto   ">
-                  Upload
+                  Donation
                 </button>
               </div>
             </div>
@@ -194,4 +172,4 @@ const AddPet = () => {
   );
 };
 
-export default AddPet;
+export default CreateDonationCampaigns;

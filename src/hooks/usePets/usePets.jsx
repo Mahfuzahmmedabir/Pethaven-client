@@ -2,11 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import UseAxiosOpen from '../UseAxiosOpen/UseAxiosOpen';
 
 const usePets = () => {
-  const axioOpen = UseAxiosOpen()
+  const axiosOpen = UseAxiosOpen()
   const {refetch, data: pets = [],} = useQuery({
     queryKey: ['pets'],
     queryFn: async () => {
-      const res = await axioOpen.get('/pets');
+      const res = await axiosOpen.get('/pets');
       return res.data
     }
   })

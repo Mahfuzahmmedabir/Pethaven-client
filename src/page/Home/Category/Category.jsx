@@ -13,9 +13,9 @@ import CategoryCard from './CategoryCard/CategoryCard';
 
 const Category = () => {
   const [activeTab, setActiveTab] = useState('');
-  console.log(activeTab);
+  activeTab;
   const [pets] = usePets();
-  console.log(pets);
+  pets;
   const cat = pets.filter(item => item.category === 'cat');
   const rabbit = pets.filter(item => item.category === 'rabbit');
   const dog = pets.filter(item => item.category === 'dog');

@@ -45,14 +45,14 @@ const AllUser = () => {
     queryKey: ['user'],
     queryFn: async () => {
       const result = await axiosProtected.get('/user');
-      console.log(result.data);
+      result.data;
       return result.data;
     },
   });
 
   const handealMakeAdmin = id => {
     axiosProtected.patch(`/user/admin/${id}`).then(res => {
-      console.log(res.data);
+      res.data;
       refetch();
       if (res.data.modifiedCount > 0) {
       }
@@ -69,9 +69,8 @@ const AllUser = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        axiosProtected.delete(`/user/${id}`).
-          then(res => {
-          console.log(res.data);
+        axiosProtected.delete(`/user/${id}`).then(res => {
+          res.data;
           refetch();
           Swal.fire({
             title: 'Deleted!',

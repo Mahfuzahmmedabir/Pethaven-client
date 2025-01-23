@@ -11,13 +11,15 @@ import AddPet from '../page/Dashboard/UserDashboard/AddPet/AddPet';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import MyAddedPets from '../page/Dashboard/UserDashboard/MyAddedPets/MyAddedPets';
 import AdoptionRequest from '../page/Dashboard/UserDashboard/AdoptionRequest/AdoptionRequest';
-import CreateDonation from '../page/Dashboard/UserDashboard/CreateDonation/CreateDonation';
+
 import MyDonationCampaigns from '../page/Dashboard/UserDashboard/MyDonationCampaigns/MyDonationCampaigns';
 import MyDonations from '../page/Dashboard/UserDashboard/MyDonations/MyDonations';
 import AllUser from '../page/Dashboard/AdminPage/AllUser/AllUser';
 import AllPets from '../page/Dashboard/AdminPage/AllPets/AllPets';
 import AllDonations from '../page/Dashboard/AdminPage/AllDonations/AllDonations';
 import PetDatails from '../Components/PetDetails/PetDatails';
+import CreateDonationCampaigns from '../page/Dashboard/UserDashboard/DonationCampaign/CreateDonationCampaigns';
+import DonationCampaign from '../page/DonationCampaign/DonationCampaign';
 
 const router = createBrowserRouter([
   {
@@ -31,7 +33,8 @@ const router = createBrowserRouter([
       {
         path: '/pet-datails/:id',
         element: <PetDatails></PetDatails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/pets/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/pets/${params.id}`),
       },
       {
         path: '/petlist',
@@ -39,7 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/donation-campaign',
-        element: <DonationCampaigns></DonationCampaigns>,
+        element: <DonationCampaign></DonationCampaign>,
       },
       {
         path: '/login',
@@ -51,10 +54,9 @@ const router = createBrowserRouter([
       },
     ],
   },
-
+  // Dashboard
   {
     path: '/dashboard',
-
     element: (
       <ProtectedRoute>
         <Dashboard></Dashboard>
@@ -89,7 +91,7 @@ const router = createBrowserRouter([
         path: 'create-donation-campaing',
         element: (
           <ProtectedRoute>
-            <CreateDonation></CreateDonation>
+            <CreateDonationCampaigns></CreateDonationCampaigns>
           </ProtectedRoute>
         ),
       },

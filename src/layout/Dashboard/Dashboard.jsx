@@ -5,15 +5,15 @@ import useAuth from '../../hooks/useAuth/useAuth';
 import useAdmin from '../../hooks/useAdmin/useAdmin';
 const Dashboard = () => {
   const { user } = useAuth();
-  const [isAdmin] = useAdmin(); 
-  console.log(isAdmin);
+  const [isAdmin] = useAdmin();
+  isAdmin;
 
   return (
     <div className="">
       <div className="flex">
-        {/* links */ }
+        {/* links */}
         <div className="w-80 min-h-screen shadow-2xl">
-          <div className="py-4 text-center bg-blue-gray-600 font-semibold text-2xl text-white">
+          <div className="py-6 text-center bg-blue-gray-600 font-semibold text-2xl text-white">
             Dashbord
           </div>
           <ul className="menu px-4 leading-10 mt-5">

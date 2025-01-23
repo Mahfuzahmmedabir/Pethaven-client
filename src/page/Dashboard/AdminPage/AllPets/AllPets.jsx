@@ -52,10 +52,9 @@ const AllPets = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        axiosProtected.delete(`/pet/${id}`)
-          .then(res => {
-            console.log(res.data)
-            refetch();
+        axiosProtected.delete(`/pet/${id}`).then(res => {
+          res.data;
+          refetch();
           Swal.fire({
             title: 'Deleted!',
             text: 'Your file has been deleted.',

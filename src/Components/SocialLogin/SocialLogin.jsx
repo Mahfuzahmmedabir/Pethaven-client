@@ -12,14 +12,13 @@ const SocialLogin = () => {
 
   const loginWithGooglePopu = () => {
     loginWithGoogle().then(res => {
-      console.log(res.user);
+      res.user;
       const userInfo = {
         email: res.user?.email,
         name: res.user?.displayName,
         photo: res.user?.photoURL,
       };
-      axiosOpen.post('/user', userInfo)
-        .then(result => {
+      axiosOpen.post('/user', userInfo).then(result => {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -27,14 +26,13 @@ const SocialLogin = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-
-      })
+      });
       navigate('/');
     });
   };
   const loginWithFacebookPopu = () => {
     loginWithFacebook().then(res => {
-      console.log(res.user);
+      res.user;
     });
   };
 

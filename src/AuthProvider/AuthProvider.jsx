@@ -19,7 +19,7 @@ const facebookProvider = new FacebookAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [lodging, setLoading] = useState(true);
-  const axiosOpen = UseAxiosOpen()
+  const axiosOpen = UseAxiosOpen();
   const createNewUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
@@ -36,7 +36,7 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
-  const updeateProfile = (name,photo) => {
+  const updeateProfile = (name, photo) => {
     setLoading(true);
     return updateProfile(auth.currentUser, {
       displayName: name,
@@ -44,17 +44,17 @@ const AuthProvider = ({ children }) => {
     });
   };
   const logOut = () => {
-    setUser(null);
+    // setUser(null);
     return signOut(auth);
   };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       setLoading(false);
       setUser(currentUser);
-      console.log(currentUser);
+      currentUser;
       if (currentUser) {
         const userInfo = { email: currentUser.email };
-        console.log(userInfo);
+        userInfo;
         axiosOpen.post('/jwt', userInfo).then(res => {
           if (res.data.token) {
             localStorage.setItem('access-token', res.data.token);

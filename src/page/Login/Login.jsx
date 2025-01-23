@@ -12,19 +12,19 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth/useAuth';
 import Swal from 'sweetalert2';
 const Login = () => {
-  const {signInWithEmailAndPass} = useAuth()
+  const { signInWithEmailAndPass } = useAuth();
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit =  async (data)  => {
+  const onSubmit = async data => {
     const { email, password } = data;
-    console.log(email, password);
+    email, password;
     try {
       const result = await signInWithEmailAndPass(email, password);
-      console.log(result)
+      result;
       Swal.fire({
         title: 'Log in successfull !',
         icon: 'success',
@@ -33,15 +33,13 @@ const Login = () => {
       navigate('/');
     } catch (error) {
       console.error('Google login error:', error.message);
-     Swal.fire({
-       icon: 'error',
-       title: 'worng Password ',
-       text: 'Something went wrong!',
-       footer: '<a href="#">Why do I have this issue?</a>',
-     });
+      Swal.fire({
+        icon: 'error',
+        title: 'worng Password ',
+        text: 'Something went wrong!',
+        footer: '<a href="#">Why do I have this issue?</a>',
+      });
     }
-
-
   };
 
   return (
