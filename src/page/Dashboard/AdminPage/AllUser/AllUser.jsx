@@ -38,9 +38,7 @@ const TABS = [
     value: 'unmonitored',
   },
 ];
-
 const TABLE_HEAD = ['Member', '', 'Status', 'Role', 'delete'];
-
 const AllUser = () => {
   const axiosProtected = useAxiosProtected();
   const { data: user = [], refetch } = useQuery({

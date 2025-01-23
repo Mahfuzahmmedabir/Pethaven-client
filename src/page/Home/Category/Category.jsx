@@ -7,7 +7,7 @@ import {
   tabs,
 } from '@material-tailwind/react';
 import { useState } from 'react';
-import SocialLogin from '../../../Components/SocialLogin/SocialLogin';
+
 import usePets from '../../../hooks/usePets/usePets';
 import CategoryCard from './CategoryCard/CategoryCard';
 
@@ -21,9 +21,6 @@ const Category = () => {
   const dog = pets.filter(item => item.category === 'dog');
   const fish = pets.filter(item => item.category === 'fish');
   const birds = pets.filter(item => item.category === 'birds');
-  // {
-  //   <CategoryCard item={cat}></CategoryCard>;
-  // }
 
   const data = [
     {
@@ -56,9 +53,9 @@ const Category = () => {
   return (
     <div className="py-3">
       <div>
-        <h2 className="text-center text-2xl"> Select you category</h2>
+        <h2 className="text-center text-6xl font-bold"> Select you category</h2>
       </div>
-      <Tabs className="text-red-500" value={activeTab}>
+      <Tabs className="text-red-500 mt-24" value={activeTab}>
         <TabsHeader
           className="rounded-none border-b border-blue-gray-50 bg-transparent p-0"
           indicatorProps={{
@@ -72,7 +69,9 @@ const Category = () => {
               value={value}
               onClick={() => setActiveTab(value)}
               className={
-                activeTab === value ? 'text-blue-gray-800 text-xl' : ' text-xl'
+                activeTab === value
+                  ? 'text-blue-gray-800 font-bold text-xl'
+                  : 'text-xl '
               }
             >
               {label}

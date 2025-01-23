@@ -17,6 +17,7 @@ import MyDonations from '../page/Dashboard/UserDashboard/MyDonations/MyDonations
 import AllUser from '../page/Dashboard/AdminPage/AllUser/AllUser';
 import AllPets from '../page/Dashboard/AdminPage/AllPets/AllPets';
 import AllDonations from '../page/Dashboard/AdminPage/AllDonations/AllDonations';
+import PetDatails from '../Components/PetDetails/PetDatails';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
+      },
+      {
+        path: '/pet-datails/:id',
+        element: <PetDatails></PetDatails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/pets/${params.id}`),
       },
       {
         path: '/petlist',
@@ -114,7 +120,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'all-donations',
-        element: <AllDonations></AllDonations>
+        element: <AllDonations></AllDonations>,
       },
     ],
   },

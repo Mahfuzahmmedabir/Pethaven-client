@@ -10,6 +10,7 @@ import moment from 'moment';
 
 import Swal from 'sweetalert2';
 import useAxiosProtected from '../../../../hooks/useAxiosProtected/useAxionProtected';
+import { useNavigate } from 'react-router-dom';
 const image_key = import.meta.env.VITE_IMG_HOSTING;
 console.log(image_key);
 const image_Api = `https://api.imgbb.com/1/upload?key=${image_key}`;
@@ -28,6 +29,7 @@ const AddPet = () => {
   const object = selectedOption?.value;
   const categorys = { categorys: object };
   const { categorys: category } = categorys;
+  const navigate = useNavigate();
 
   const {
     register,
@@ -56,7 +58,8 @@ const AddPet = () => {
         date: date,
         user: user?.email,
       };
-      axiosProtected.post('/pets', pets).then(res => {
+      axiosProtected.post('/pets', pets)
+        .then(res => {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -65,6 +68,7 @@ const AddPet = () => {
           timer: 1500,
         });
       });
+     navigate('/');
     }
   };
   return (

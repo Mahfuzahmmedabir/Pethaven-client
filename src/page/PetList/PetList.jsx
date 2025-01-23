@@ -3,7 +3,8 @@ import usePets from '../../hooks/usePets/usePets';
 import CategoryCard from '../Home/Category/CategoryCard/CategoryCard';
 
 const PetList = () => {
-  const  [pets] = usePets()
+  const [pets] = usePets()
+  conosle.log(pets)
   
   return (
     <div>
