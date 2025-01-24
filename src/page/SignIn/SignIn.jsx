@@ -48,11 +48,9 @@ const Signin = () => {
         <title>Pet-haven || Sign In</title>
       </Helmet>
       {/* Animation section */}
-
-      <div>
+      <div className="w-4/12">
         <Lottie animationData={SigninAnimation}></Lottie>
       </div>
-
       {/* form section */}
       <div>
         <Card color="transparent" className="p-7" shadow={true}>

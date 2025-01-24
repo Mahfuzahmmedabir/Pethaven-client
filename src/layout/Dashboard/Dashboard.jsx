@@ -74,7 +74,7 @@ const Dashboard = () => {
                       className="flex gap-2 items-center"
                       to={'/dashboard/my-added-pets'}
                     >
-                      <FaUtensils FaUtensils className="text-xl"></FaUtensils>
+                      <FaUtensils className="text-xl"></FaUtensils>
                       My added pets
                     </NavLink>
                   </li>
@@ -135,7 +135,7 @@ const Dashboard = () => {
                       className="flex gap-2 items-center"
                       to={'/dashboard/my-added-pets'}
                     >
-                      <FaUtensils FaUtensils className="text-xl"></FaUtensils>
+                      <FaUtensils  className="text-xl"></FaUtensils>
                       My added pets
                     </NavLink>
                   </li>

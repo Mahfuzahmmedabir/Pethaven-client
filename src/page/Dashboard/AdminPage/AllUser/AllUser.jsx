@@ -51,7 +51,8 @@ const AllUser = () => {
   });
 
   const handealMakeAdmin = id => {
-    axiosProtected.patch(`/user/admin/${id}`).then(res => {
+    axiosProtected.patch(`/user/admin/${id}`)
+      .then(res => {
       res.data;
       refetch();
       if (res.data.modifiedCount > 0) {

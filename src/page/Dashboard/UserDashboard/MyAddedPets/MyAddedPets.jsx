@@ -20,34 +20,52 @@ import {
   Tooltip,
   Input,
 } from '@material-tailwind/react';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-const TABLE_HEAD = ['Number', 'Category', 'Date', 'Status', 'Updeat', 'Delete'];
-
-const TABLE_ROWS = [
-  {
-    img: 'https://docs.material-tailwind.com/img/logos/logo-spotify.svg',
-    name: 'Spotify',
-    amount: '$2,500',
-    date: 'Wed 3:00pm',
-    status: 'paid',
-    account: 'visa',
-    accountNumber: '1234',
-    expiry: '06/2026',
-  },
+const TABLE_HEAD = [
+  'Number',
+  'Category',
+  'Publish',
+  'Status',
+  'Delete',
+  'Updeat',
 ];
 
 const MyAddedPets = () => {
   const { user } = useAuth();
   const axiosProtected = useAxiosProtected();
-  const { data: pets = [] } = useQuery({
-    queryKey: ['pets'],
+  const { refetch, data: pets = [] } = useQuery({
+    queryKey: ['pets',user?.email],
     queryFn: async () => {
       const res = await axiosProtected.get(`/pet?email=${user.email}`);
       res.data;
       return res.data;
     },
   });
-
+  const handealDelete = async id => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then(result => {
+      if (result.isConfirmed) {
+        axiosProtected.delete(`/pet/${id}`).then(res => {
+          res.data;
+          refetch();
+          Swal.fire({
+            title: 'Deleted!',
+            text: 'Your file has been deleted.',
+            icon: 'success',
+          });
+        });
+      }
+    });
+  };
   return (
     <div>
       <Card className="h-full w-full">
@@ -99,6 +117,7 @@ const MyAddedPets = () => {
               {pets.map(
                 (
                   {
+                    _id,
                     image,
                     name,
                     category,
@@ -110,7 +129,7 @@ const MyAddedPets = () => {
                   },
                   index
                 ) => {
-                  const isLast = index === TABLE_ROWS.length - 1;
+                  const isLast = index === pets.length - 1;
                   const classes = isLast
                     ? 'p-4'
                     : 'p-4 border-b border-blue-gray-50';
@@ -150,7 +169,7 @@ const MyAddedPets = () => {
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {category}
+                          {category.toUpperCase()}
                         </Typography>
                       </td>
                       <td className={classes}>
@@ -183,8 +202,8 @@ const MyAddedPets = () => {
                       </td>
                       <td className={classes}>
                         <div className="flex items-center gap-3">
-                          <div className="h-9 w-12 rounded-md border border-blue-gray-50 p-1">
-                            Updeat
+                          <div className="h-9  rounded-md border border-blue-gray-50 hover:bg-red-600 hover:text-white p-1">
+                            <button onClick={()=> handealDelete(_id)}> Delete</button>
                           </div>
                           <div className="flex flex-col">
                             <Typography
@@ -205,7 +224,7 @@ const MyAddedPets = () => {
                         </div>
                       </td>
                       <td className={classes}>
-                        <Tooltip content="Edit User">
+                        <Tooltip content="Edit Pets">
                           <IconButton variant="text">
                             <PencilIcon className="h-4 w-4" />
                           </IconButton>

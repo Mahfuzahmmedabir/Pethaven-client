@@ -14,11 +14,11 @@ image_key;
 const image_Api = `https://api.imgbb.com/1/upload?key=${image_key}`;
 
 const options = [
-  { value: 'dog', label: 'Dog' },
-  { value: 'cat', label: 'Cat' },
-  { value: 'rabbit', label: 'Rabbit' },
-  { value: 'fish', label: 'Fish' },
-  { value: 'birds', label: 'Birds' },
+  { value: 'Dog', label: 'Dog' },
+  { value: 'Cat', label: 'Cat' },
+  { value: 'Rabbit', label: 'Rabbit' },
+  { value: 'Fish', label: 'Fish' },
+  { value: 'Birds', label: 'Birds' },
 ];
 const AddPet = () => {
   const { user } = useAuth();
