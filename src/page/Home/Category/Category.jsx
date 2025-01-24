@@ -7,10 +7,8 @@ import {
   tabs,
 } from '@material-tailwind/react';
 import { useState } from 'react';
-
 import usePets from '../../../hooks/usePets/usePets';
 import CategoryCard from './CategoryCard/CategoryCard';
-
 const Category = () => {
   const [activeTab, setActiveTab] = useState('');
   activeTab;

@@ -3,6 +3,7 @@ import { FaBars, FaHome, FaList, FaUserTag, FaUtensils } from 'react-icons/fa';
 import { NavLink, Outlet } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth/useAuth';
 import useAdmin from '../../hooks/useAdmin/useAdmin';
+import { Helmet } from 'react-helmet-async';
 const Dashboard = () => {
   const { user } = useAuth();
   const [isAdmin] = useAdmin();
@@ -10,7 +11,11 @@ const Dashboard = () => {
 
   return (
     <div className="">
+      <Helmet>
+        <title>Pet-haven || Dashboard</title>
+      </Helmet>
       <div className="flex">
+      
         {/* links */}
         <div className="w-80 min-h-screen shadow-2xl">
           <div className="py-6 text-center bg-blue-gray-600 font-semibold text-2xl text-white">

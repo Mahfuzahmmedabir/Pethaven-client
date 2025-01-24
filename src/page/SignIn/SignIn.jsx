@@ -4,7 +4,10 @@ import { Card, Input, Checkbox, Typography } from '@material-tailwind/react';
 import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 import Swal from 'sweetalert2';
+import SigninAnimation from '../../../public/Animation22 - 1737710449043.json';
+import Lottie from 'lottie-react';
 import UseAxiosOpen from '../../hooks/UseAxiosOpen/UseAxiosOpen';
+import { Helmet } from 'react-helmet-async';
 const Signin = () => {
   const axiosOpen = UseAxiosOpen();
   const navigat = useNavigate();
@@ -23,16 +26,16 @@ const Signin = () => {
           name,
           photo,
         };
-        axiosOpen.post('/user', useInfor)
-          
+        axiosOpen
+          .post('/user', useInfor)
+
           .then(res => {
-          if (res.data) {
-            Swal.fire('SweetAlert2 is working!');
-          }
-        });
+            if (res.data) {
+              Swal.fire('SweetAlert2 is working!');
+            }
+          });
       });
       await updeateProfile(name, photo).then(() => {
-   
         navigat('/');
       });
     } catch (error) {
@@ -41,10 +44,14 @@ const Signin = () => {
   };
   return (
     <div className="mt-10 flex justify-evenly">
+      <Helmet>
+        <title>Pet-haven || Sign In</title>
+      </Helmet>
       {/* Animation section */}
-      {/* TODO */}
 
-      <div>Animation section</div>
+      <div>
+        <Lottie animationData={SigninAnimation}></Lottie>
+      </div>
 
       {/* form section */}
       <div>
@@ -138,10 +145,7 @@ const Signin = () => {
             />
 
             <div className="bg-black py-2 rounded-xl text-center">
-              <button
-                className="  font-bold text-white mx-auto text-center"
-                fullWidth
-              >
+              <button className="  font-bold text-white mx-auto text-center">
                 Sign up
               </button>
             </div>

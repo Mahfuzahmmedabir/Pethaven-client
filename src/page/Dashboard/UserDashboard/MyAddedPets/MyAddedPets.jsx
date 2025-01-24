@@ -164,7 +164,7 @@ const MyAddedPets = () => {
                       </td>
                       <td className={classes}>
                         <div className="w-max">
-                          <Chip
+                          {/* <Chip
                             size="sm"
                             variant="ghost"
                             value={status}
@@ -177,23 +177,14 @@ const MyAddedPets = () => {
                                 <>sfsfd</>
                               )
                             }
-                          />
+                          /> */}
+                          Adopted
                         </div>
                       </td>
                       <td className={classes}>
                         <div className="flex items-center gap-3">
                           <div className="h-9 w-12 rounded-md border border-blue-gray-50 p-1">
-                            <Avatar
-                              src={
-                                account === 'visa'
-                                  ? 'https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/visa.png'
-                                  : 'https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/mastercard.png'
-                              }
-                              size="sm"
-                              alt={account}
-                              variant="square"
-                              className="h-full w-full object-contain p-1"
-                            />
+                            Updeat
                           </div>
                           <div className="flex flex-col">
                             <Typography

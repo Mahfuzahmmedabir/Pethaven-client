@@ -7,10 +7,13 @@ import {
   Typography,
 } from '@material-tailwind/react';
 import { Link, useNavigate } from 'react-router-dom';
+import LoginAnimation from '../../../public/Animation1 - 1737710193498.json';
+import Lottie from 'lottie-react';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth/useAuth';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 const Login = () => {
   const { signInWithEmailAndPass } = useAuth();
   const navigate = useNavigate();
@@ -44,9 +47,14 @@ const Login = () => {
 
   return (
     <div>
-      <div className="mt-10 flex justify-evenly">
+      <div className="mt-10 flex justify-around  h-[700px]">
+        <Helmet>
+          <title>Pet-haven || Log In</title>
+        </Helmet>
         {/* Animation section */}
-        <div>sdfsd</div>
+        <div className="w-6/12 ">
+          <Lottie animationData={LoginAnimation}></Lottie>
+        </div>
         {/* form section */}
         <div>
           <Card color="transparent" className="p-7" shadow={true}>
@@ -96,10 +104,7 @@ const Login = () => {
               </div>
               <label>Forget password</label>
               <div className="bg-black py-2 rounded-xl text-center">
-                <button
-                  className="  font-bold text-white mx-auto text-center"
-                  fullWidth
-                >
+                <button className="  font-bold text-white mx-auto text-center">
                   Log In
                 </button>
               </div>
