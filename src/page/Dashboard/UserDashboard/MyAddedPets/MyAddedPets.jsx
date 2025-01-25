@@ -36,7 +36,7 @@ const MyAddedPets = () => {
   const { user } = useAuth();
   const axiosProtected = useAxiosProtected();
   const { refetch, data: pets = [] } = useQuery({
-    queryKey: ['pets',user?.email],
+    queryKey: ['pets', user?.email],
     queryFn: async () => {
       const res = await axiosProtected.get(`/pet?email=${user.email}`);
       res.data;
@@ -66,6 +66,14 @@ const MyAddedPets = () => {
       }
     });
   };
+
+  // const handealAdopt = (id) => {
+  //   axiosProtected.patch(`/pets/adopted/${id}`)
+  //     .then(res => {
+  //       alert('ksksss')
+  //     console.log(res.data)
+  //   })
+  // }
   return (
     <div>
       <Card className="h-full w-full">
@@ -76,7 +84,7 @@ const MyAddedPets = () => {
                 My Added Pets
               </Typography>
               <Typography color="gray" className="mt-1 font-normal">
-                These are details about the last transactions
+                These are details about the My Added Pets
               </Typography>
             </div>
             <div className="flex w-full shrink-0 gap-2 md:w-max">
@@ -87,7 +95,7 @@ const MyAddedPets = () => {
                 />
               </div>
               <Button className="flex items-center gap-3" size="sm">
-                <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" />{' '}
+                <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" />
                 Download
               </Button>
             </div>
@@ -169,7 +177,7 @@ const MyAddedPets = () => {
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {category.toUpperCase()}
+                          {category}
                         </Typography>
                       </td>
                       <td className={classes}>
@@ -178,7 +186,7 @@ const MyAddedPets = () => {
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {date.split(',')}
+                          {date?.split(',')}
                         </Typography>
                       </td>
                       <td className={classes}>
@@ -197,13 +205,16 @@ const MyAddedPets = () => {
                               )
                             }
                           /> */}
-                          Adopted
+                          <button>Adopted</button>
                         </div>
                       </td>
                       <td className={classes}>
                         <div className="flex items-center gap-3">
                           <div className="h-9  rounded-md border border-blue-gray-50 hover:bg-red-600 hover:text-white p-1">
-                            <button onClick={()=> handealDelete(_id)}> Delete</button>
+                            <button onClick={() => handealDelete(_id)}>
+                              {' '}
+                              Delete
+                            </button>
                           </div>
                           <div className="flex flex-col">
                             <Typography
@@ -225,9 +236,11 @@ const MyAddedPets = () => {
                       </td>
                       <td className={classes}>
                         <Tooltip content="Edit Pets">
-                          <IconButton variant="text">
-                            <PencilIcon className="h-4 w-4" />
-                          </IconButton>
+                          <Link to={`/updeats/${_id}`}>
+                            <IconButton variant="text">
+                              <PencilIcon className="h-4 w-4" />
+                            </IconButton>
+                          </Link>
                         </Tooltip>
                       </td>
                     </tr>

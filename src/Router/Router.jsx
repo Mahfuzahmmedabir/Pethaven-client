@@ -17,7 +17,8 @@ import AllDonations from '../page/Dashboard/AdminPage/AllDonations/AllDonations'
 import PetDatails from '../Components/PetDetails/PetDatails';
 import CreateDonationCampaigns from '../page/Dashboard/UserDashboard/DonationCampaign/CreateDonationCampaigns';
 import DonationCam from '../page/DonationCam/DonationCam';
-
+import Updeat from '../Components/Updeat/Updeat';
+import DonationCamDetails from '../page/DonationCam/DonationCamDetails/DonationCamDetails';
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,18 @@ const router = createBrowserRouter([
       {
         path: '/signin',
         element: <Signin></Signin>,
+      },
+      {
+        path: '/updeats/:id',
+        element: <Updeat></Updeat>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/pets/${params.id}`),
+      },
+      {
+        path: '/donation-cam-details/:id',
+        element: <DonationCamDetails></DonationCamDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/getWithId/${params.id}`),
       },
     ],
   },

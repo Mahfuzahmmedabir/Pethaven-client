@@ -36,7 +36,7 @@ const SwiperSlider = () => {
           <div className=" bg-cover bg-center bg-pet-haven2 h-[600px]">
             <div className="py-64 flex items-center justify-center">
               <h2 className="text-gray-200 w-[600px] text-4xl">
-                They’re not just pets—they’re family. Start your journey to
+                They’re not just pets they’re family. Start your journey to
                 unconditional love today.
               </h2>
             </div>
