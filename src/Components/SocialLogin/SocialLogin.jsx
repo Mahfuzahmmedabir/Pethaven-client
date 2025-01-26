@@ -1,24 +1,25 @@
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { SiFacebook } from 'react-icons/si';
+import { SiGithub } from 'react-icons/si';
 import useAuth from '../../hooks/useAuth/useAuth';
 import UseAxiosOpen from '../../hooks/UseAxiosOpen/UseAxiosOpen';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 const SocialLogin = () => {
-  const { loginWithGoogle, loginWithFacebook } = useAuth();
+  const { loginWithGoogle, gitHubProviders } = useAuth();
   const axiosOpen = UseAxiosOpen();
   const navigate = useNavigate();
-
   const loginWithGooglePopu = () => {
-    loginWithGoogle().then(res => {
+    loginWithGoogle()
+      .then(res => {
       res.user;
       const userInfo = {
         email: res.user?.email,
         name: res.user?.displayName,
         photo: res.user?.photoURL,
       };
-      axiosOpen.post('/user', userInfo).then(result => {
+      axiosOpen.post('/user', userInfo)
+        .then(result => {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -30,10 +31,30 @@ const SocialLogin = () => {
       navigate('/');
     });
   };
-  const loginWithFacebookPopu = () => {
-    loginWithFacebook().then(res => {
+
+
+  const loginWithTwitters = () => {
+    gitHubProviders()
+      .then(res => {
       res.user;
-    });
+      const gitHubInfo = {
+        email: res.user?.email,
+        name: res.user?.displayName,
+        photo: res.user?.photoURL,
+        };
+        
+        axiosOpen.post('/user', gitHubInfo)
+          .then(result => {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        });
+        navigate('/');
+      });
   };
 
   return (
@@ -48,11 +69,11 @@ const SocialLogin = () => {
       </div>
       <div>
         <button
-          onClick={loginWithFacebookPopu}
+          onClick={loginWithTwitters}
           className="flex w-full rounded-full  mt-5 justify-center gap-3 items-center py-3 border "
         >
-          <SiFacebook className="text-2xl text-[#1877f2]"></SiFacebook> Log In
-          with Google
+          <SiGithub  className="text-2xl text-black"></SiGithub> Log In
+          with GitHub
         </button>
       </div>
     </div>

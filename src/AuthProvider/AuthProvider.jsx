@@ -1,6 +1,6 @@
 import {
   createUserWithEmailAndPassword,
-  FacebookAuthProvider,
+  GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -15,7 +15,7 @@ import UseAxiosOpen from '../hooks/UseAxiosOpen/UseAxiosOpen';
 export const AuthContext = createContext(null);
 
 const googleProvider = new GoogleAuthProvider();
-const facebookProvider = new FacebookAuthProvider();
+const gitHubProvider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [lodging, setLoading] = useState(true);
@@ -28,9 +28,9 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
-  const loginWithFacebook = () => {
+  const gitHubProviders = () => {
     setLoading(true);
-    return signInWithPopup(auth, facebookProvider);
+    return signInWithPopup(auth, gitHubProvider);
   };
   const signInWithEmailAndPass = (email, password) => {
     setLoading(true);
@@ -49,6 +49,7 @@ const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
+      console.log(currentUser);
       setLoading(false);
       setUser(currentUser);
       currentUser;
@@ -73,7 +74,7 @@ const AuthProvider = ({ children }) => {
     loginWithGoogle,
     user,
     lodging,
-    loginWithFacebook,
+    gitHubProviders,
     signInWithEmailAndPass,
     logOut,
     updeateProfile,

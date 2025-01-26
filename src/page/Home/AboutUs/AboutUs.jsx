@@ -13,8 +13,9 @@ const AboutUs = () => {
           <div className=" py-44 w-96  mx-auto   ">
             <h2 className="text-4xl  text-white font-bold  ">About us</h2>
             <p className="text-white ">
-              We help shelters and rescue groups save pets.<br></br> Learn more
-              and meet our team.
+              we can give these pets the life they deserve. Join our mission and
+              be the voice they cannot have. Your compassion can transform
+              lives—one paw at a time
             </p>
           </div>
         </div>

@@ -57,7 +57,8 @@ const Updeat = () => {
         date: date,
         user: user?.email,
       };
-      axiosProtected.put(`/updeat/${_id}`, pets).then(res => {
+      axiosProtected.put(`/updeat/${_id}`, pets)
+        .then(res => {
         console.log(res.data);
         Swal.fire({
           position: 'top-end',

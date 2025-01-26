@@ -21,7 +21,6 @@ const DonationCamDetails = () => {
               </span>{' '}
               ${amount}
             </Typography>
-
             <Typography color="blue-gray" className="mb-2">
               <span className="text-light-green-700 font-semibold">
                 Publish:{' '}
@@ -34,19 +33,18 @@ const DonationCamDetails = () => {
               </span>
               {lastDate}
             </Typography>
-
             <Typography color="blue-gray" className="mb-2">
               <span className="text-light-green-700 font-semibold">Note: </span>{' '}
               {note}
             </Typography>
             <Typography color="blue-gray" className="mb-2">
               <span className="text-light-green-700 font-semibold">
-                Descriptions:{' '}
+                Descriptions:
               </span>
               {descriptions}
             </Typography>
             <button className="py-2 px-6 bg-light-green-700 text-white font-semibold rounded-lg">
-              Donate now button
+              Donate now
             </button>
           </div>
         </div>

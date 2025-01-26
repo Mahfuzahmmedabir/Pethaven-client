@@ -1,8 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Card } from '@material-tailwind/react';
-
 import { useQuery } from '@tanstack/react-query';
-import Swal from 'sweetalert2';
 import useAxiosProtected from '../../hooks/useAxiosProtected/useAxionProtected';
 import { Link } from 'react-router-dom';
 
@@ -43,14 +41,6 @@ const DonationCam = () => {
                     <span className="text-xl  font-semibold">Amount: $ </span>
                     {item?.amount}
                   </p>
-                  <h3 className="mt-2">
-                    <span className="text-xl  font-semibold">Note: </span>
-                    {item?.note}
-                  </h3>{' '}
-                  <h3 className="mt-3">
-                    <span className="text-xl font-semibold">Description: </span>
-                    {item?.descriptions}
-                  </h3>
                   <div className="flex gap-4">
                     <Link
                       to={`/donation-cam-details/${item?._id}`}

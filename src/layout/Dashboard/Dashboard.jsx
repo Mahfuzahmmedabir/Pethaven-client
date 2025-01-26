@@ -1,9 +1,21 @@
 import React from 'react';
-import { FaBars, FaHome, FaList, FaUserTag, FaUtensils } from 'react-icons/fa';
+import {
+  FaBars,
+  FaHome,
+  FaList,
+  FaHouseUser,
+  FaUserTag,
+  FaUtensils,
+  FaHotTub,
+  FaAngleDoubleUp,
+} from 'react-icons/fa';
+import { MdDragIndicator } from 'react-icons/md';
+import { IoAdd, IoBagAdd } from 'react-icons/io5';
 import { NavLink, Outlet } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth/useAuth';
 import useAdmin from '../../hooks/useAdmin/useAdmin';
 import { Helmet } from 'react-helmet-async';
+import { MdPets } from 'react-icons/md';
 const Dashboard = () => {
   const { user } = useAuth();
   const [isAdmin] = useAdmin();
@@ -15,7 +27,6 @@ const Dashboard = () => {
         <title>Pet-haven || Dashboard</title>
       </Helmet>
       <div className="flex">
-      
         {/* links */}
         <div className="w-80 min-h-screen shadow-2xl">
           <div className="py-6 text-center bg-blue-gray-600 font-semibold text-2xl text-white">
@@ -33,7 +44,7 @@ const Dashboard = () => {
                       className="flex gap-2 items-center"
                       to={'/dashboard/all-user'}
                     >
-                      <FaHome className="text-xl"></FaHome>
+                      <FaHouseUser className="text-xl"></FaHouseUser>
                       All User
                     </NavLink>
                   </li>
@@ -43,7 +54,7 @@ const Dashboard = () => {
                       to={'/dashboard/all-pets'}
                     >
                       {/* userDashboard */}
-                      <FaHome className="text-xl"></FaHome>
+                      <MdPets className="text-xl"></MdPets>
                       All Pets
                     </NavLink>
                   </li>
@@ -52,7 +63,7 @@ const Dashboard = () => {
                       className="flex gap-2 items-center"
                       to={'/dashboard/all-donations'}
                     >
-                      <FaHome className="text-xl"></FaHome>
+                      <FaHotTub className="text-xl"></FaHotTub>
                       All Donations
                     </NavLink>
                   </li>
@@ -65,8 +76,8 @@ const Dashboard = () => {
                       className="flex gap-2 items-center"
                       to={'/dashboard/add-pet'}
                     >
-                      <FaHome className="text-xl"></FaHome>
-                      Add pet
+                      <IoAdd className="text-xl"></IoAdd>
+                      Add Pet
                     </NavLink>
                   </li>
                   <li>
@@ -74,7 +85,7 @@ const Dashboard = () => {
                       className="flex gap-2 items-center"
                       to={'/dashboard/my-added-pets'}
                     >
-                      <FaUtensils className="text-xl"></FaUtensils>
+                      <IoBagAdd className="text-xl"></IoBagAdd>
                       My added pets
                     </NavLink>
                   </li>
@@ -92,7 +103,7 @@ const Dashboard = () => {
                       className="flex gap-2 items-center"
                       to={'/dashboard/create-donation-campaing'}
                     >
-                      <FaUserTag className="text-xl"></FaUserTag>
+                      <FaAngleDoubleUp className="text-xl"></FaAngleDoubleUp>
                       Create Donation Campaign
                     </NavLink>
                   </li>
@@ -101,7 +112,7 @@ const Dashboard = () => {
                       className="flex gap-2 items-center"
                       to={'/dashboard/my-donation-campaigns'}
                     >
-                      <FaUserTag className="text-xl"></FaUserTag>
+                      <MdDragIndicator className="text-xl"></MdDragIndicator>
                       My Donation Campaigns
                     </NavLink>
                   </li>
@@ -135,7 +146,7 @@ const Dashboard = () => {
                       className="flex gap-2 items-center"
                       to={'/dashboard/my-added-pets'}
                     >
-                      <FaUtensils  className="text-xl"></FaUtensils>
+                      <FaUtensils className="text-xl"></FaUtensils>
                       My added pets
                     </NavLink>
                   </li>
