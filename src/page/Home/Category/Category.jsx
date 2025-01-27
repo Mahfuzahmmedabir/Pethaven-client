@@ -51,7 +51,7 @@ const Category = () => {
   return (
     <div className="py-3">
       <div>
-        <h2 className="text-center text-6xl font-bold"> Select you category</h2>
+        <h2 className="text-center text-6xl font-bold"> Select Pet Category</h2>
       </div>
       <Tabs className="text-red-500 mt-24" value={activeTab}>
         <TabsHeader

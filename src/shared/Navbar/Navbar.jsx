@@ -113,6 +113,15 @@ const Navbars = () => {
                         </DialogHeader>
                         <DialogBody>
                           <div className=" text-center -mt-5 text-xl ">
+                            <div className=" flex flex-col">
+                              <Link>Home</Link>
+                              <Link to={'petlist'}>Pet Listing</Link>
+                              <Link
+                                to={'/donation-campaign'}>Donation Campaigns
+                              </Link>
+                            
+                            </div>
+
                             <Link to={'dashboard'}>Dashboard </Link>
                           </div>
 

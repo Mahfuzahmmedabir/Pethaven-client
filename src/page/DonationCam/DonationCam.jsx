@@ -21,7 +21,7 @@ const DonationCam = () => {
         <title>Pet-Haven || Donation campaigns</title>
       </Helmet>
       <h2 className="text-center text-4xl">Donation campaigns</h2>
-      {donations.length}
+      
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
         {donations.map(item => (
           <div key={item._id}>

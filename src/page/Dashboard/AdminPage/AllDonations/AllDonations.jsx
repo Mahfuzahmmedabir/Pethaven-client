@@ -19,7 +19,8 @@ import {
 } from '@material-tailwind/react';
 import useAxiosProtected from '../../../../hooks/useAxiosProtected/useAxionProtected';
 import { useQuery } from '@tanstack/react-query';
-const TABLE_HEAD = ['Member', '', 'Status', 'Date', 'Edit', 'Delete', ];
+import Swal from 'sweetalert2';
+const TABLE_HEAD = ['Member', '', 'Status', 'Date', 'Edit', 'Delete'];
 
 const TABS = [
   {
@@ -37,7 +38,7 @@ const TABS = [
 ];
 const AllDonations = () => {
   const axiosProtected = useAxiosProtected();
-  const { data: donations = [] } = useQuery({
+  const { refetch, data: donations = [] } = useQuery({
     queryKey: ['donation'],
     queryFn: async () => {
       const res = await axiosProtected.get('/donations');
@@ -46,8 +47,33 @@ const AllDonations = () => {
     },
   });
 
+  const handealDelete =  id => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then(result => {
+      if (result.isConfirmed) {
+        axiosProtected.delete(`/dona/${id}`).then(res => {
+          res.data;
+          refetch();
+          Swal.fire({
+            title: 'Deleted!',
+            text: 'Your file has been deleted.',
+            icon: 'success',
+          });
+        });
+      }
+    });
+  };
+
   return (
     <div>
+      
       <Card className="h-full w-full">
         <CardHeader floated={false} shadow={false} className="rounded-none">
           <div className="mb-8 flex items-center justify-between gap-8">
@@ -109,7 +135,10 @@ const AllDonations = () => {
             </thead>
             <tbody>
               {donations.map(
-                ({ name, email, image, job, org, online, date }, index) => {
+                (
+                  { name, email, image, job, org, online, date, _id },
+                  index
+                ) => {
                   const isLast = index === donations.length - 1;
                   const classes = isLast
                     ? 'p-4'
@@ -188,7 +217,10 @@ const AllDonations = () => {
                           color="blue-gray"
                           className="font-normal"
                         >
-                          <button className="py-2 px-3 border hover:bg-red-600 hover:text-white">
+                          <button
+                            onClick={() => handealDelete(_id)}
+                            className="py-2 px-3 border hover:bg-red-600 hover:text-white"
+                          >
                             Delete
                           </button>
                         </Typography>

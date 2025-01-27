@@ -18,8 +18,8 @@ const PetDatails = () => {
   const dates = date.split(',');
   return (
     <Card className="p-5">
-      <div className="mt-10 flex  gap-8">
-        <div className="w-6/12">
+      <div className="lg:mt-10 lg:flex  gap-8">
+        <div className="lg:w-6/12">
           <img className="rounded-lg" src={image} alt="" />
         </div>
         <div className="w-6/12">
@@ -49,16 +49,19 @@ const PetDatails = () => {
             </span>
             {dates[0]}
           </Typography>
-          <Typography color="blue-gray" className="mb-2">
-            <span className="text-light-green-700 font-semibold">Note: </span>{' '}
-            {note}
-          </Typography>
-          <Typography color="blue-gray" className="mb-2">
-            <span className="text-light-green-700 font-semibold">
-              Descriptions:{' '}
-            </span>
-            {descriptions}
-          </Typography>
+          <div className="w-96 md:w-[500px] lg:w-full ">
+            <Typography color="blue-gray" className="mb-2">
+              <span className="text-light-green-700 font-semibold">Note: </span>{' '}
+              {note}
+            </Typography>
+            <Typography color="blue-gray" className="mb-2 ">
+              <span className="text-light-green-700 font-semibold">
+                Descriptions:{' '}
+              </span>
+              {descriptions}
+            </Typography>
+          </div>
+
           <button className="py-2 px-6 bg-light-green-700 text-white font-semibold rounded-lg">
             Adopt
           </button>
