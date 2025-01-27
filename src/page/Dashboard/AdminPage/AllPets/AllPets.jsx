@@ -24,23 +24,9 @@ import Swal from 'sweetalert2';
 
 const TABLE_HEAD = ['Ptes', '', 'Publish', 'Pandin', 'Delete', 'Edit Pet', ''];
 
-const TABLE_ROWS = [
-  {
-    img: 'https://docs.material-tailwind.com/img/logos/logo-spotify.svg',
-    name: 'Spotify',
-    amount: '$2,500',
-    date: 'Wed 3:00pm',
-    status: 'paid',
-    account: 'visa',
-    accountNumber: '1234',
-    expiry: '06/2026',
-  },
-];
-
 const AllPets = () => {
   const [pets, refetch] = usePets();
   const axiosProtected = useAxiosProtected();
-
   const handealDelete = id => {
     Swal.fire({
       title: 'Are you sure?',
@@ -130,7 +116,7 @@ const AllPets = () => {
                   },
                   index
                 ) => {
-                  const isLast = index === TABLE_ROWS.length - 1;
+                  const isLast = index === pets.length - 1;
                   const classes = isLast
                     ? 'p-4'
                     : 'p-4 border-b border-blue-gray-50';
@@ -217,6 +203,7 @@ const AllPets = () => {
                         <Tooltip content="Edit Pet">
                           <IconButton variant="text">
                             <Link>
+                              
                               <PencilIcon className="h-4 w-4" />
                             </Link>
                           </IconButton>

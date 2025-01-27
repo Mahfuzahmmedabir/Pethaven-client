@@ -38,7 +38,7 @@ const TABS = [
     value: 'unmonitored',
   },
 ];
-const TABLE_HEAD = ['Member', '', 'Status', 'Role', 'delete'];
+const TABLE_HEAD = ['Member', '', 'Status', 'Role', 'Delete'];
 const AllUser = () => {
   const axiosProtected = useAxiosProtected();
   const { data: user = [], refetch } = useQuery({
@@ -83,17 +83,6 @@ const AllUser = () => {
     });
   };
 
-  const TABLE_ROWS = [
-    {
-      // img: 'https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg',
-      name: 'John Michael',
-      email: 'john@creative-tim.com',
-      job: 'Manager',
-      org: 'Organization',
-      online: true,
-      date: '23/04/18',
-    },
-  ];
 
   return (
     <div>
@@ -163,7 +152,7 @@ const AllUser = () => {
                   { photo, name, email, _id, role, job, org, online, date },
                   index
                 ) => {
-                  const isLast = index === TABLE_ROWS.length - 1;
+                  const isLast = index === user.length - 1;
                   const classes = isLast
                     ? 'p-4'
                     : 'p-4 border-b border-blue-gray-50';

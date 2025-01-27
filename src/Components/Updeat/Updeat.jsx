@@ -20,12 +20,11 @@ const options = [
   { value: 'Birds', label: 'Birds' },
 ];
 const Updeat = () => {
-  const axiosOpen = UseAxiosOpen()
-  const {user} = useAuth()
-  const axiosProtected = useAxiosProtected()
+  const axiosOpen = UseAxiosOpen();
+  const { user } = useAuth();
+  const axiosProtected = useAxiosProtected();
   const upedat = useLoaderData();
   const { age, note, _id, image, name, location, descriptions } = upedat;
-
   const [selectedOption, setSelectedOption] = useState(null);
   const object = selectedOption?.value;
   const categorys = { categorys: object };
@@ -57,8 +56,7 @@ const Updeat = () => {
         date: date,
         user: user?.email,
       };
-      axiosProtected.put(`/updeat/${_id}`, pets)
-        .then(res => {
+      axiosProtected.put(`/updeat/${_id}`, pets).then(res => {
         console.log(res.data);
         Swal.fire({
           position: 'top-end',

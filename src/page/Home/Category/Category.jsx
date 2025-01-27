@@ -14,11 +14,11 @@ const Category = () => {
   activeTab;
   const [pets] = usePets();
   pets;
-  const cat = pets.filter(item => item.category === 'cat');
-  const rabbit = pets.filter(item => item.category === 'rabbit');
-  const dog = pets.filter(item => item.category === 'dog');
-  const fish = pets.filter(item => item.category === 'fish');
-  const birds = pets.filter(item => item.category === 'birds');
+  const cat = pets.filter(item => item.category === 'Cat');
+  const rabbit = pets.filter(item => item.category === 'Rabbit');
+  const dog = pets.filter(item => item.category === 'Dog');
+  const fish = pets.filter(item => item.category === 'Fish');
+  const birds = pets.filter(item => item.category === 'Birds');
 
   const data = [
     {

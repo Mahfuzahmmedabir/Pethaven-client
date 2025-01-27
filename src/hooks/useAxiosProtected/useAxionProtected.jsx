@@ -2,7 +2,7 @@ import axios from 'axios';
 import useAuth from '../useAuth/useAuth';
 import { useNavigate } from 'react-router-dom';
 const axiosProtected = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: 'https://pethaven-server.vercel.app',
 });
 const useAxiosProtected = () => {
   const { logOut } = useAuth();

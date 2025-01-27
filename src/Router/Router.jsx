@@ -33,7 +33,7 @@ const router = createBrowserRouter([
         path: '/pet-datails/:id',
         element: <PetDatails></PetDatails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/pets/${params.id}`),
+          fetch(`https://pethaven-server.vercel.app/pets/${params.id}`),
       },
       {
         path: '/petlist',
@@ -55,13 +55,13 @@ const router = createBrowserRouter([
         path: '/updeats/:id',
         element: <Updeat></Updeat>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/pets/${params.id}`),
+          fetch(`https://pethaven-server.vercel.app/pets/${params.id}`),
       },
       {
         path: '/donation-cam-details/:id',
         element: <DonationCamDetails></DonationCamDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/getWithId/${params.id}`),
+          fetch(`https://pethaven-server.vercel.app/getWithId/${params.id}`),
       },
     ],
   },
@@ -74,6 +74,12 @@ const router = createBrowserRouter([
       </ProtectedRoute>
     ),
     children: [
+      {
+        path: '/dashboard',
+        element: (
+          <h2 className="text-3xl text-center">Welcome to you Deshboard</h2>
+        ),
+      },
       {
         path: 'add-pet',
         element: (

@@ -37,7 +37,6 @@ const Dashboard = () => {
               <>
                 {/* admin */}
                 <div className="border-b-2">
-                  <div className="divider border-b-4"></div>
                   <h2 className="text-3xl ">Admin</h2>
                   <li className="flex">
                     <NavLink
@@ -207,6 +206,10 @@ const Dashboard = () => {
               />
             </div>
           </div>
+          <NavLink className="flex gap-2 items-center" to={'/dashboard'}>
+            {' '}
+          </NavLink>
+
           <div className="p-6">
             <Outlet></Outlet>
           </div>

@@ -31,7 +31,7 @@ const Signin = () => {
 
           .then(res => {
             if (res.data) {
-              Swal.fire('SweetAlert2 is working!');
+              Swal.fire('Sign Up sussecfull');
             }
           });
       });
@@ -101,7 +101,7 @@ const Signin = () => {
               {errors.email && (
                 <span className="-mt-6 text-red-600">
                   {' '}
-                  Email Address is required{' '}
+                  Email Address is required
                 </span>
               )}
               <Typography variant="h6" color="blue-gray" className="-mb-3">
@@ -109,7 +109,7 @@ const Signin = () => {
               </Typography>
               <Input
                 {...register('password', {
-                  pattern: /^(?=.*[!@#$%^&*(),.?":{}|<>])/,
+                  pattern: /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/,
                 })}
                 type="password"
                 size="lg"

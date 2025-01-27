@@ -18,7 +18,6 @@ const MyDonationCampaigns = () => {
   });
   return (
     <div>
-      My Donation Campaign {myDonation.length}
       {myDonation.length == 0 ? (
         <>
           <h2 className="text-center text-3xl">
