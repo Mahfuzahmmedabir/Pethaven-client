@@ -10,12 +10,12 @@ const DonationCamDetails = () => {
   return (
     <div>
       <Card className="p-5">
-        <div className="mt-10 flex gap-5   ">
-          <div className="w-6/12">
+        <div className="lg:mt-10 lg:flex gap-5">
+          <div className="lg:w-6/12">
             <img className="rounded-lg w-full  h-96" src={image} alt="" />
           </div>
-          <div className="w-6/12">
-            <Typography color="blue-gray" className="mb-2">
+          <div className="lg:w-6/12">
+            <Typography color="blue-gray" className="mb-2 mt-3">
               <span className="text-light-green-700 font-semibold">
                 Amount:
               </span>{' '}

@@ -19,6 +19,7 @@ import CreateDonationCampaigns from '../page/Dashboard/UserDashboard/DonationCam
 import DonationCam from '../page/DonationCam/DonationCam';
 import Updeat from '../Components/Updeat/Updeat';
 import DonationCamDetails from '../page/DonationCam/DonationCamDetails/DonationCamDetails';
+import AdminRoute from './AdminRoute/AdminRoute';
 
 const router = createBrowserRouter([
   {
@@ -131,15 +132,27 @@ const router = createBrowserRouter([
       // admin route
       {
         path: 'all-user',
-        element: <AllUser></AllUser>,
+        element: (
+          <AdminRoute>
+            <AllUser></AllUser>
+          </AdminRoute>
+        ),
       },
       {
         path: 'all-pets',
-        element: <AllPets></AllPets>,
+        element: (
+          <AdminRoute>
+            <AllPets></AllPets>
+          </AdminRoute>
+        ),
       },
       {
         path: 'all-donations',
-        element: <AllDonations></AllDonations>,
+        element: (
+          <AdminRoute>
+            <AllDonations></AllDonations>
+          </AdminRoute>
+        ),
       },
     ],
   },

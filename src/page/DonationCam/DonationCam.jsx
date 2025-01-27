@@ -10,7 +10,7 @@ const DonationCam = () => {
     queryKey: ['donation'],
     queryFn: async () => {
       const res = await axiosProtected.get('/donations');
-      console.log(res.data);
+      
       return res.data;
     },
   });

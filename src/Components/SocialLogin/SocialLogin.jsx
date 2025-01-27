@@ -23,7 +23,7 @@ const SocialLogin = () => {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'Your work has been saved',
+          title: 'Log in successfully',
           showConfirmButton: false,
           timer: 1500,
         });
@@ -31,8 +31,6 @@ const SocialLogin = () => {
       navigate('/');
     });
   };
-
-
   const loginWithTwitters = () => {
     gitHubProviders()
       .then(res => {
@@ -48,7 +46,7 @@ const SocialLogin = () => {
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'Your work has been saved',
+            title: 'Log in successfully',
             showConfirmButton: false,
             timer: 1500,
           });

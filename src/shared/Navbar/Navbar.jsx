@@ -57,16 +57,12 @@ const Navbars = () => {
         variant="small"
         color="blue-gray"
         className="p-1 font-normal"
-      >
-        <NavLink to={'dashboard'} className="flex items-center">
-          Dashboard
-        </NavLink>
-      </Typography>
+      ></Typography>
     </ul>
   );
   return (
     <div className="">
-      <div className=" relative  ">
+      <div className="relative ">
         <Navbar className=" w-11/12 mx-auto fixed top-0 left-0 right-0  z-50  max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
           <div className="flex items-center justify-between text-blue-gray-900">
             <Typography
@@ -116,15 +112,13 @@ const Navbars = () => {
                             <div className=" flex flex-col">
                               <Link>Home</Link>
                               <Link to={'petlist'}>Pet Listing</Link>
-                              <Link
-                                to={'/donation-campaign'}>Donation Campaigns
+                              <Link to={'/donation-campaign'}>
+                                Donation Campaigns
                               </Link>
-                            
                             </div>
 
                             <Link to={'dashboard'}>Dashboard </Link>
                           </div>
-
                           <div className="text-center">
                             <button
                               className="py-2 px-4 mt-5 hover:bg-red-700 hover:text-white rounded-md border"
@@ -142,14 +136,14 @@ const Navbars = () => {
                     <Button
                       variant="text"
                       size="sm"
-                      className="hidden lg:inline-block"
+                      className="lg:inline-block"
                     >
                       <Link to={'/login'}>Log In</Link>
                     </Button>
                     <Button
                       variant="gradient"
                       size="sm"
-                      className="hidden lg:inline-block"
+                      className="lg:inline-block"
                     >
                       <Link to={'/signin'}>Sign in</Link>
                     </Button>

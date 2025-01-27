@@ -29,7 +29,7 @@ const Login = () => {
       const result = await signInWithEmailAndPass(email, password);
       result;
       Swal.fire({
-        title: 'Log in successfull !',
+        title: 'Log in successfully!',
         icon: 'success',
         draggable: true,
       });
@@ -38,13 +38,12 @@ const Login = () => {
       console.error('Google login error:', error.message);
       Swal.fire({
         icon: 'error',
-        title: 'worng Password ',
+        title: 'worng Password or Email ',
         text: 'Something went wrong!',
         footer: '<a href="#">Why do I have this issue?</a>',
       });
     }
   };
-
   return (
     <div>
       <div className="mt-10 flex justify-around  h-[700px]">
@@ -52,7 +51,7 @@ const Login = () => {
           <title>Pet-haven || Log In</title>
         </Helmet>
         {/* Animation section */}
-        <div className="w-6/12 ">
+        <div className="w-6/12 hidden lg:block ">
           <Lottie animationData={LoginAnimation}></Lottie>
         </div>
         {/* form section */}

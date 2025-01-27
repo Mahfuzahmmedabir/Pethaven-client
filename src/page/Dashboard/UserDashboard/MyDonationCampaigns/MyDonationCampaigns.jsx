@@ -12,7 +12,7 @@ const MyDonationCampaigns = () => {
     queryKey: ['donation'],
     queryFn: async () => {
       const res = await axiosProtected.get(`/donationes?email=${user?.email}`);
-      console.log(res.data);
+    
       return res.data;
     },
   });

@@ -22,8 +22,8 @@ const PetDatails = () => {
         <div className="lg:w-6/12">
           <img className="rounded-lg" src={image} alt="" />
         </div>
-        <div className="w-6/12">
-          <Typography variant="h5" color="blue-gray" className="mb-2">
+        <div className="lg:w-6/12">
+          <Typography variant="h5" color="blue-gray" className="mb-2 mt-3">
             <span className="text-light-green-700 font-semibold">Name: </span>
             {name}
           </Typography>
@@ -49,7 +49,7 @@ const PetDatails = () => {
             </span>
             {dates[0]}
           </Typography>
-          <div className="w-96 md:w-[500px] lg:w-full ">
+         
             <Typography color="blue-gray" className="mb-2">
               <span className="text-light-green-700 font-semibold">Note: </span>{' '}
               {note}
@@ -60,7 +60,7 @@ const PetDatails = () => {
               </span>
               {descriptions}
             </Typography>
-          </div>
+         
 
           <button className="py-2 px-6 bg-light-green-700 text-white font-semibold rounded-lg">
             Adopt
