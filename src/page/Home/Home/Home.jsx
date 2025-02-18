@@ -3,6 +3,7 @@ import SwiperSlider from '../SwiperSlider/SwiperSlider';
 import Category from '../Category/Category';
 import { Helmet } from 'react-helmet-async';
 import FeaturedPets from '../../FeaturedPets/FeaturedPets';
+import CTASection from '../../CTASection/CTASection';
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <Category></Category>
       <AboutUs></AboutUs>
       <FeaturedPets></FeaturedPets>
+      <CTASection></CTASection>
     </div>
   );
 };

@@ -34,7 +34,7 @@ const SwiperSlider = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className=" bg-cover bg-center bg-pet-haven2 h-[600px]">
-            <div className="py-64 flex items-center justify-center">
+            <div className="py-64 flex bg-black bg-opacity-25 items-center justify-center">
               <h2 className="text-gray-200 w-[600px] text-4xl">
                 They’re not just pets they’re family. Start your journey to
                 unconditional love today.
@@ -43,8 +43,8 @@ const SwiperSlider = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className=" bg-cover bg-center bg-pet-haven3 h-[600px]">
-            <div className="py-64 flex items-center justify-center">
+          <div className=" bg-cover  bg-center bg-pet-haven3 h-[600px]">
+            <div className="py-64 flex bg-black bg-opacity-25 items-center justify-center">
               <h2 className="text-gray-100 w-[600px] text-4xl">
                 Love doesn’t have a price tag, but it does have a wagging tail.
                 Change a life – adopt today.
@@ -54,7 +54,7 @@ const SwiperSlider = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className=" bg-cover bg-center bg-pet-haven4 h-[600px]">
-            <div className="py-64 flex items-center justify-center">
+            <div className="py-64 flex bg-black bg-opacity-10 items-center justify-center">
               <h2 className="text-gray-200 w-[600px] text-4xl">
                 They may be small, but their love is infinite. Open your heart
                 and give them a forever home
