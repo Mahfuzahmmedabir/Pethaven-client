@@ -154,7 +154,6 @@ const Navbars = () => {
             </div>
           </div>
         </Navbar>
-
         <div className="mx-auto max-w-screen-md py-12"></div>
       </div>
     </div>
