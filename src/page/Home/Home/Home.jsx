@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import FeaturedPets from '../../FeaturedPets/FeaturedPets';
 import CTASection from '../../CTASection/CTASection';
 import ReviewsSection from '../../ReviewsSection/ReviewsSection';
+import PetCareTips from '../../PetCareTips/PetCareTips';
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
       <FeaturedPets></FeaturedPets>
       <CTASection></CTASection>
       <ReviewsSection></ReviewsSection>
+      <PetCareTips></PetCareTips>
     </div>
   );
 };
