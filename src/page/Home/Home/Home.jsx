@@ -4,6 +4,7 @@ import Category from '../Category/Category';
 import { Helmet } from 'react-helmet-async';
 import FeaturedPets from '../../FeaturedPets/FeaturedPets';
 import CTASection from '../../CTASection/CTASection';
+import ReviewsSection from '../../ReviewsSection/ReviewsSection';
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
       <AboutUs></AboutUs>
       <FeaturedPets></FeaturedPets>
       <CTASection></CTASection>
+      <ReviewsSection></ReviewsSection>
     </div>
   );
 };
