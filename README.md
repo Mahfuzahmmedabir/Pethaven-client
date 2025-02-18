@@ -49,9 +49,6 @@ Welcome to **Pet Haven**, a platform dedicated to connecting loving homes with a
 
 
 
-
----
-
 ### Thank You!
 Thank you for supporting Pet Haven! Together, we can help pets find their forever homes. 
 
