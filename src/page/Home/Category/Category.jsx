@@ -49,11 +49,14 @@ const Category = () => {
   ];
 
   return (
-    <div className="py-3">
+    <div className="mt-6">
       <div>
-        <h2 className="text-center text-6xl font-bold"> Select Pet Category</h2>
+        <h2 className="text-center text-4xl font-semibold">
+          {' '}
+          Select Pet Category
+        </h2>
       </div>
-      <Tabs className="text-red-500 mt-24" value={activeTab}>
+      <Tabs className="text-red-500 mt-6" value={activeTab}>
         <TabsHeader
           className="rounded-none border-b border-blue-gray-50 bg-transparent p-0"
           indicatorProps={{
