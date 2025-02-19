@@ -26,16 +26,13 @@ const pets = [
     image: 'https://placekitten.com/203/200',
     description: 'An energetic pup who loves to play.',
   },
-
-
 ];
 
 const FeaturedPets = () => {
-
-  const [pets] = usePets()
+  const [pets] = usePets();
   return (
     <section className="py-12 bg-gray-100">
-      <div className="container mx-auto px-6">
+      <div className="  ">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
           Featured Pets for Adoption
         </h2>

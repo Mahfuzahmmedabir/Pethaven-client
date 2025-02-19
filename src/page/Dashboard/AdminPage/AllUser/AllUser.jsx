@@ -51,8 +51,7 @@ const AllUser = () => {
   });
 
   const handealMakeAdmin = id => {
-    axiosProtected.patch(`/user/admin/${id}`)
-      .then(res => {
+    axiosProtected.patch(`/user/admin/${id}`).then(res => {
       res.data;
       refetch();
       if (res.data.modifiedCount > 0) {
@@ -82,11 +81,9 @@ const AllUser = () => {
       }
     });
   };
-
-
   return (
     <div>
-      <Card className="h-full w-full">
+      <Card className="h-full w-full rounded-none">
         <CardHeader floated={false} shadow={false} className="rounded-none">
           <div className="mb-8 flex items-center justify-between gap-8">
             <div>
@@ -226,7 +223,7 @@ const AllUser = () => {
                         </Typography>
                       </td>
                       <td className={classes}>
-                        <Tooltip content="Edit User">
+                        <Tooltip content="Delete User">
                           <IconButton variant="text">
                             <button onClick={() => handealDelete(_id)}>
                               <FiDelete className="text-xl"></FiDelete>

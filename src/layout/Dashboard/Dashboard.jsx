@@ -28,11 +28,13 @@ const Dashboard = () => {
       </Helmet>
       <div className="flex">
         {/* links */}
-        <div className="w-80 min-h-screen shadow-2xl">
-          <div className="py-6 text-center bg-blue-gray-600 font-semibold text-2xl text-white">
+
+        <div className="w-80  sticky top-0 right-0 left-0  z-50 min-h-screen shadow-2xl">
+          <div className="py-6 sticky top-0 text-center bg-blue-gray-600 font-semibold text-2xl text-white">
             Dashbord
           </div>
-          <ul className="menu px-4 leading-10 mt-5">
+
+          <ul className="menu px-4 fixed top-16 leading-10 mt-5">
             {isAdmin ? (
               <>
                 {/* admin */}
@@ -192,9 +194,11 @@ const Dashboard = () => {
             {/* admim Link */}
           </ul>
         </div>
+
         {/* outlet */}
-        <div className="w-full ">
-          <div className="flex justify-between shadow-2xl px-10 p-5  ">
+
+        <div className="w-full  ">
+          <div className="flex items-center sticky top-0 z-50 bg-white justify-between shadow-2xl px-10 p-5  ">
             <div>
               <FaBars></FaBars>
             </div>
@@ -209,8 +213,7 @@ const Dashboard = () => {
           <NavLink className="flex gap-2 items-center" to={'/dashboard'}>
             {' '}
           </NavLink>
-
-          <div className="p-6">
+          <div>
             <Outlet></Outlet>
           </div>
         </div>
@@ -218,5 +221,9 @@ const Dashboard = () => {
     </div>
   );
 };
+// tanekboyle@gmail.com
+// 
+
+ 
 
 export default Dashboard;

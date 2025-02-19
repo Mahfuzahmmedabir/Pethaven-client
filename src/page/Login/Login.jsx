@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Card,
   Input,
@@ -15,6 +15,18 @@ import useAuth from '../../hooks/useAuth/useAuth';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
 const Login = () => {
+  const [formData, setFormData] = useState(false);
+
+  const handleAutoFill = () => {
+    setFormData({
+      email: 'tanekboyle@gmail.com',
+      password: 'Abc123@',
+    });
+  };
+  const handleChange = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const { signInWithEmailAndPass } = useAuth();
   const navigate = useNavigate();
   const {
@@ -22,6 +34,7 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const onSubmit = async data => {
     const { email, password } = data;
     email, password;
@@ -42,6 +55,7 @@ const Login = () => {
         text: 'Something went wrong!',
         footer: '<a href="#">Why do I have this issue?</a>',
       });
+      alert('pls only click email fild or password fild then try!');
     }
   };
   return (
@@ -60,26 +74,33 @@ const Login = () => {
             <Typography className="text-center" variant="h2" color="blue-gray">
               Log In
             </Typography>
-
             <SocialLogin></SocialLogin>
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="mt-8 mb-2  w-80 max-w-screen-lg sm:w-96"
             >
               <div className="mb-1 flex flex-col gap-6">
+                <button
+                  onClick={handleAutoFill}
+                  className="py-2 px-3 border  w-52 mx-auto"
+                >
+                  Admin Credentials
+                </button>
+
                 <Typography variant="h6" color="blue-gray" className="-mb-3">
                   Your Email
                 </Typography>
                 <Input
                   {...register('email', { required: true })}
                   size="lg"
-                  placeholder="email@mail.com"
+                  placeholder="Email@mail.com"
+                  value={formData.email}
+                  onChange={handleChange}
                   className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                 />
                 {errors.email && (
                   <span className="-mt-6 text-red-600">
-                    {' '}
-                    Email Address is required{' '}
+                    Email Address is required
                   </span>
                 )}
                 <Typography variant="h6" color="blue-gray" className="-mb-3">
@@ -91,10 +112,11 @@ const Login = () => {
                   })}
                   type="password"
                   size="lg"
+                  value={formData.password}
+                  onChange={handleChange}
                   placeholder="********"
                   className=" border-t-blue-gray-200 focus:!border-t-gray-900"
                 />
-
                 {errors.password && (
                   <span className="-mt-6 text-red-600">
                     password Address is required
