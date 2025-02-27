@@ -1,15 +1,14 @@
-
 import React from 'react';
 import { Facebook, Instagram, Twitter, Mail, Phone } from 'lucide-react';
 
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-300 py-10">
-      <div className="container mx-auto px-6 grid md:grid-cols-3 gap-8">
+      <div className=" w-11/12 mx-auto   px-6 lg:flex justify-between gap-8">
         {/* About Section */}
         <div>
           <h2 className="text-xl font-bold text-white mb-4">🐾 Pet Haven</h2>
-          <p className="text-sm">
+          <p className="text-sm lg:w-[500px] ">
             Pet Haven is dedicated to finding loving homes for pets in need.
             Adopt, foster, or donate to make a difference.
           </p>
@@ -20,22 +19,22 @@ const Footer = () => {
           <h2 className="text-xl font-bold text-white mb-4">Quick Links</h2>
           <ul className="space-y-2">
             <li>
-              <a href="/about" className="hover:text-white">
+              <a href="" className="hover:text-white">
                 About Us
               </a>
             </li>
             <li>
-              <a href="/adopt" className="hover:text-white">
+              <a href="" className="hover:text-white">
                 Adopt a Pet
               </a>
             </li>
             <li>
-              <a href="/donate" className="hover:text-white">
+              <a href="" className="hover:text-white">
                 Donate
               </a>
             </li>
             <li>
-              <a href="/contact" className="hover:text-white">
+              <a href="" className="hover:text-white">
                 Contact
               </a>
             </li>

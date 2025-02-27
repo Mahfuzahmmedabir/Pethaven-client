@@ -13,7 +13,6 @@ import { createContext } from 'react';
 import { auth } from '../firebase/firebase.init';
 import UseAxiosOpen from '../hooks/UseAxiosOpen/UseAxiosOpen';
 export const AuthContext = createContext(null);
-
 const googleProvider = new GoogleAuthProvider();
 const gitHubProvider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
@@ -49,10 +48,10 @@ const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      
       setLoading(false);
       setUser(currentUser);
       currentUser;
+
       if (currentUser) {
         const userInfo = { email: currentUser.email };
         userInfo;
@@ -69,6 +68,7 @@ const AuthProvider = ({ children }) => {
       };
     });
   }, [axiosOpen]);
+  
   const authInfo = {
     createNewUser,
     loginWithGoogle,

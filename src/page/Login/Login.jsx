@@ -16,7 +16,6 @@ import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
 const Login = () => {
   const [formData, setFormData] = useState(false);
-
   const handleAutoFill = () => {
     setFormData({
       email: 'tanekboyle@gmail.com',
@@ -29,6 +28,7 @@ const Login = () => {
 
   const { signInWithEmailAndPass } = useAuth();
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -58,6 +58,8 @@ const Login = () => {
       alert('pls only click email fild or password fild then try!');
     }
   };
+
+  
   return (
     <div>
       <div className="mt-10 flex justify-around  h-[700px]">
@@ -103,6 +105,8 @@ const Login = () => {
                     Email Address is required
                   </span>
                 )}
+
+
                 <Typography variant="h6" color="blue-gray" className="-mb-3">
                   Password
                 </Typography>
